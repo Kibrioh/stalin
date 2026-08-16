@@ -1,0 +1,904 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #202020;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+/* =========================================================
+   MAIN PAGE CONTAINER
+========================================================= */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    background: #202020;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    width: 100%;
+    padding: 12px 16px 0;
+}
+
+.logo-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 145px;
+    max-width: 45%;
+    height: auto;
+    object-fit: contain;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.user-icon {
+    font-size: 28px;
+    line-height: 1;
+    color: #d69cff;
+    margin-bottom: 3px;
+}
+
+.green-line {
+    width: 100%;
+    height: 1px;
+    margin-top: 12px;
+    background: #00a82d;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    width: 100%;
+    padding: 28px 20px 18px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(20px, 5vw, 36px);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero h1 span {
+    color: #ff9fb8;
+}
+
+.hero p {
+    margin-top: 8px;
+    color: #00a82d;
+    font-size: clamp(8px, 2vw, 13px);
+}
+
+
+/* =========================================================
+   CALCULATOR SECTION
+========================================================= */
+
+.calculator-card {
+    width: calc(100% - 26px);
+    max-width: 950px;
+    margin: 0 auto 30px;
+
+    padding: 22px;
+
+    background: #101010;
+    border-radius: 13px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.calculator {
+    width: 100%;
+    text-align: center;
+}
+
+.calculator h3 {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.divider {
+    width: 125px;
+    height: 1px;
+    margin: 10px auto 18px;
+    background: #555;
+}
+
+.calculator label {
+    display: block;
+
+    margin-top: 15px;
+    margin-bottom: 7px;
+
+    color: #c7c7c7;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+}
+
+.calculator h2 {
+    margin-bottom: 8px;
+    font-size: clamp(16px, 4vw, 24px);
+}
+
+
+/* =========================================================
+   RANGE SLIDER
+========================================================= */
+
+input[type="range"] {
+    width: 100%;
+    height: 5px;
+    margin: 8px 0;
+
+    accent-color: #263ca8;
+
+    cursor: pointer;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+
+    color: #c7c7c7;
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   REPAYMENT BUTTONS
+========================================================= */
+
+.term-buttons {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 7px;
+}
+
+.term-buttons button {
+    min-height: 38px;
+
+    border: 1px solid #555;
+    border-radius: 7px;
+
+    background: #202127;
+    color: #ffffff;
+
+    font-size: 8px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.term-buttons button:hover {
+    transform: translateY(-1px);
+}
+
+.term-buttons button span {
+    display: block;
+    margin-top: 2px;
+    font-size: 6px;
+}
+
+.term-buttons .active-term {
+    background: #08743d;
+    border-color: #08743d;
+}
+
+
+/* =========================================================
+   MONTHLY PAYMENT
+========================================================= */
+
+.monthly-payment {
+    width: 100%;
+    max-width: 160px;
+
+    margin: 25px auto;
+
+    padding: 16px;
+
+    border: 1px solid #555;
+    border-radius: 9px;
+
+    background: #202127;
+
+    text-align: center;
+}
+
+.monthly-payment span {
+    display: block;
+
+    color: #c7c7c7;
+    font-size: 7px;
+}
+
+.monthly-payment strong {
+    display: block;
+
+    margin: 6px 0;
+
+    font-size: clamp(20px, 6vw, 30px);
+}
+
+.monthly-payment small {
+    display: block;
+
+    color: #c7c7c7;
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   APPLY BUTTON
+========================================================= */
+
+.apply-button {
+    width: 100%;
+    max-width: 180px;
+
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #172fa0;
+    color: #ffffff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    box-shadow: 0 5px 18px rgba(23, 47, 160, 0.4);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.apply-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 24px rgba(23, 47, 160, 0.5);
+}
+
+
+/* =========================================================
+   FEATURE CARDS
+========================================================= */
+
+.features {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.feature {
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px;
+
+    border: 1px solid #555;
+    border-radius: 9px;
+
+    background: #202127;
+}
+
+.feature-icon {
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #4b2370;
+
+    font-size: 16px;
+}
+
+.feature strong,
+.feature small {
+    display: block;
+}
+
+.feature strong {
+    margin-bottom: 3px;
+    font-size: 9px;
+}
+
+.feature small {
+    color: #c7c7c7;
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   APPLICATION PAGE
+========================================================= */
+
+.application-container {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    padding: 15px 16px 40px;
+}
+
+.application-container h1 {
+    margin: 10px 0;
+
+    text-align: center;
+
+    font-size: clamp(21px, 5vw, 32px);
+}
+
+.application-intro {
+    max-width: 650px;
+
+    margin: 0 auto 20px;
+
+    text-align: center;
+
+    color: #dddddd;
+
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-button {
+    border: none;
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+.back-button:hover {
+    color: #00a82d;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.application-container form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.application-container form > label {
+    display: block;
+
+    margin-top: 12px;
+    margin-bottom: 5px;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.application-container input,
+.application-container select,
+.application-container textarea {
+    width: 100%;
+
+    min-height: 38px;
+
+    border: 1px solid #555;
+    border-radius: 7px;
+
+    padding: 9px 10px;
+
+    background: #3c3c3c;
+    color: #ffffff;
+
+    outline: none;
+}
+
+.application-container input:focus,
+.application-container select:focus,
+.application-container textarea:focus {
+    border-color: #2d54d8;
+
+    box-shadow:
+        0 0 0 2px rgba(45, 84, 216, 0.15);
+}
+
+.application-container input::placeholder {
+    color: #a9a9a9;
+}
+
+
+/* =========================================================
+   CONSENT
+========================================================= */
+
+.consent {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: flex-start;
+
+    gap: 7px;
+
+    margin-top: 15px !important;
+
+    color: #dddddd;
+
+    font-size: 10px !important;
+    line-height: 1.4;
+}
+
+.consent input {
+    width: auto !important;
+    min-height: auto;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submit-button {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #0064a8;
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.submit-button:hover {
+    background: #0078c8;
+    transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =========================================================
+   FORM MESSAGE
+========================================================= */
+
+.form-message {
+    margin-top: 12px;
+    padding: 10px;
+
+    border-radius: 7px;
+
+    background: #292929;
+
+    text-align: center;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .header {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .logo {
+        width: 125px;
+    }
+
+    .calculator-card {
+        width: calc(100% - 18px);
+        padding: 17px;
+    }
+
+    .feature {
+        min-height: 56px;
+    }
+
+    .feature-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .application-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
+/* =========================================================
+   TABLETS
+========================================================= */
+
+@media (min-width: 600px) {
+
+    .page {
+        max-width: 760px;
+    }
+
+    .header {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .hero {
+        padding-top: 40px;
+    }
+
+    .calculator-card {
+        padding: 30px;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .feature {
+        min-height: 90px;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+
+    .application-container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 900px) {
+
+    body {
+        background: #151515;
+    }
+
+    .page {
+        max-width: 1200px;
+
+        min-height: 100vh;
+
+        background: #202020;
+    }
+
+    .header {
+        padding: 20px 45px 0;
+    }
+
+    .logo {
+        width: 175px;
+    }
+
+    .welcome {
+        font-size: 16px;
+    }
+
+    .user-icon {
+        font-size: 32px;
+    }
+
+    .hero {
+        padding: 55px 30px 30px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 12px;
+    }
+
+
+    /* Desktop calculator */
+
+    .calculator-card {
+        display: grid;
+
+        grid-template-columns:
+            minmax(400px, 1.4fr)
+            minmax(260px, 0.8fr);
+
+        align-items: center;
+
+        gap: 50px;
+
+        padding: 45px;
+
+        border-radius: 16px;
+    }
+
+    .calculator {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .calculator h3 {
+        font-size: 16px;
+    }
+
+    .calculator label {
+        font-size: 9px;
+    }
+
+    .calculator h2 {
+        font-size: 24px;
+    }
+
+    .term-buttons {
+        gap: 10px;
+    }
+
+    .term-buttons button {
+        min-height: 45px;
+        font-size: 10px;
+    }
+
+    .term-buttons button span {
+        font-size: 7px;
+    }
+
+    .monthly-payment {
+        max-width: 190px;
+        padding: 20px;
+    }
+
+    .monthly-payment strong {
+        font-size: 30px;
+    }
+
+    .apply-button {
+        max-width: 220px;
+        padding: 14px;
+        font-size: 12px;
+    }
+
+
+    /* Desktop feature cards */
+
+    .features {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .feature {
+        min-height: 90px;
+
+        flex-direction: row;
+
+        justify-content: flex-start;
+
+        text-align: left;
+
+        padding: 15px;
+    }
+
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 20px;
+    }
+
+    .feature strong {
+        font-size: 12px;
+    }
+
+    .feature small {
+        font-size: 9px;
+    }
+
+
+    /* Desktop application */
+
+    .application-container {
+        max-width: 950px;
+
+        padding-top: 35px;
+    }
+
+    .application-container h1 {
+        font-size: 32px;
+    }
+
+    .application-intro {
+        font-size: 13px;
+        margin-bottom: 30px;
+    }
+
+    .application-container form {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        column-gap: 25px;
+        row-gap: 0;
+
+        padding: 30px;
+
+        border-radius: 14px;
+
+        background: #101010;
+    }
+
+    .application-container form > label {
+        font-size: 14px;
+    }
+
+    .application-container input,
+    .application-container select {
+        min-height: 45px;
+        font-size: 14px;
+    }
+
+    .consent {
+        grid-column: 1 / -1;
+
+        margin-top: 25px !important;
+
+        justify-content: center;
+    }
+
+    .submit-button {
+        grid-column: 1 / -1;
+
+        width: 300px;
+
+        margin: 20px auto 0;
+
+        padding: 15px;
+
+        font-size: 12px;
+    }
+
+    .form-message {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .page {
+        max-width: 1400px;
+    }
+
+    .header {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .calculator-card {
+        max-width: 1050px;
+        padding: 55px;
+    }
+
+    .application-container {
+        max-width: 1050px;
+    }
+}

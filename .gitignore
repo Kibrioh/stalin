@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.*
+.env.local
+# Local Netlify folder
+.netlify
+# Windows metadata
+*:Zone.Identifier
