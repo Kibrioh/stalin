@@ -12,9 +12,12 @@ function App() {
     });
 
     function handleApply(details) {
-        setScreen("application");
         setLoanDetails(details);
-        
+        setScreen("application");
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
     }
 
     function handleBack() {
