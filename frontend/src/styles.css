@@ -139,6 +139,7 @@ a {
   min-height: 70px;
   box-sizing: border-box;
   width: 100%;
+  margin-bottom: 10px;
 
 
   background: #f8f5ef;
@@ -158,6 +159,7 @@ a {
     top: 0;
     z-index: 1000;
     height: 60%;
+    
   }
 }
 
@@ -172,10 +174,9 @@ a {
 }
 
 .logo {
-  width: 145px;
-  max-width: 60%;
-
+  width: clamp(70px, 8vw, 110px);
   height: auto;
+  max-width: 60%;
 
   object-fit: contain;
 }
