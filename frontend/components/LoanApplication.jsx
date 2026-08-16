@@ -71,7 +71,6 @@ function LoanApplication({ loanDetails, onBack }) {
                 );
             }
             setSubmitted(true);
-            setApplicationNumber(data.application_number);
             setMessage(
                 `Application submitted successfully. Reference: ${data.application_number}`
             );
