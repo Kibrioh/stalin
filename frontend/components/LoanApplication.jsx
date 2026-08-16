@@ -70,10 +70,11 @@ function LoanApplication({ loanDetails, onBack }) {
                     "Application failed."
                 );
             }
-            setSubmitted(true);
+            
             setMessage(
                 `Application submitted successfully. Reference: ${data.application_number}`
             );
+            setSubmitted(true);
 
         } catch (error) {
 
@@ -111,7 +112,7 @@ function LoanApplication({ loanDetails, onBack }) {
                 <span>Application Reference</span>
 
                 <strong>
-                    {applicationNumber}
+                    {data.application_number}
                 </strong>
                 </div>
 
@@ -120,8 +121,6 @@ function LoanApplication({ loanDetails, onBack }) {
                 className="submit-button"
                 onClick={() => {
                     setSubmitted(false);
-                    setApplicationNumber("");
-
                     window.scrollTo({
                     top: 0,
                     behavior: "instant"
