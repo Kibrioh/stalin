@@ -117,12 +117,7 @@ function LoanApplication({ loanDetails, onBack }) {
                 type="button"
                 className="submit-button"
                 onClick={() => {
-                    setSubmitted(false);
-                    App();
-                    window.scrollTo({
-                    top: 0,
-                    behavior: "instant"
-                    });
+                    window.location.reload();
                 }}
                 >
                 Back to Home
