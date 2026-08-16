@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./header";
+import App from "../src/App.jsx";
 
 function LoanApplication({ loanDetails, onBack }) {
 
@@ -117,6 +118,7 @@ function LoanApplication({ loanDetails, onBack }) {
                 className="submit-button"
                 onClick={() => {
                     setSubmitted(false);
+                    App();
                     window.scrollTo({
                     top: 0,
                     behavior: "instant"
