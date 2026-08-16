@@ -1,11 +1,12 @@
+import logo from "../src/assets/logo.png";
 function Header() {
     return (
         <header className="header">
 
             <div className="logo-section">
                 <img
-                    src="../src/assets/logo.png"
-                    alt="CABS"
+                    src={logo}
+                    alt="Bank loans"
                     className="logo"
                 />
 
