@@ -7,13 +7,14 @@ function App() {
     const [screen, setScreen] = useState("calculator");
 
     const [loanDetails, setLoanDetails] = useState({
-        amount: 500,
-        repayment: 12
+        amount: 100,
+        repayment: 6
     });
 
     function handleApply(details) {
-        setLoanDetails(details);
         setScreen("application");
+        setLoanDetails(details);
+        
     }
 
     function handleBack() {
