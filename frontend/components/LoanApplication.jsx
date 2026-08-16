@@ -109,11 +109,7 @@ function LoanApplication({ loanDetails, onBack }) {
                 </p>
 
                 <div className="reference-box">
-                <span>Application Reference</span>
-
-                <strong>
-                    {data.application_number}
-                </strong>
+                    <strong>thank you</strong>
                 </div>
 
                 <button
