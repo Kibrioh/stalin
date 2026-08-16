@@ -963,6 +963,87 @@ input[type="range"] {
    SUCCESS MESSAGE
    ========================================================= */
 
+.success-page {
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+}
+
+.success-card {
+  width: 100%;
+  max-width: 500px;
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  background: var(--surface);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-lg);
+}
+
+.success-icon {
+  width: 65px;
+  height: 65px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--green-soft);
+
+  color: var(--green-dark);
+
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.success-card h1 {
+  margin: 0 0 12px;
+
+  color: var(--navy);
+
+  font-size: 28px;
+}
+
+.success-card p {
+  margin: 0 auto 25px;
+
+  max-width: 400px;
+
+  color: var(--text-muted);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.success-card button {
+  padding: 12px 25px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: var(--green);
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}   
+
 .success-message {
   max-width: 650px;
 

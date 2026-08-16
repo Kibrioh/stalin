@@ -16,6 +16,7 @@ function LoanApplication({ loanDetails, onBack }) {
 
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
+    const [submitted, setSubmitted] = useState(false);
 
     function handleChange(e) {
 
@@ -69,7 +70,8 @@ function LoanApplication({ loanDetails, onBack }) {
                     "Application failed."
                 );
             }
-
+            setSubmitted(true);
+            setApplicationNumber(data.application_number);
             setMessage(
                 `Application submitted successfully. Reference: ${data.application_number}`
             );
@@ -83,6 +85,58 @@ function LoanApplication({ loanDetails, onBack }) {
             setLoading(false);
         }
     }
+
+    if (submitted) {
+        return (
+            <div className="application-container success-page">
+
+            <div className="success-card">
+
+                <div className="success-icon">
+                ✓
+                </div>
+
+                <h1>Application Submitted</h1>
+
+                <p className="success-title">
+                Your loan application has been submitted successfully.
+                </p>
+
+                <p className="success-description">
+                We have received your application and will review the
+                information provided. You will be contacted once there is
+                an update on your application.
+                </p>
+
+                <div className="reference-box">
+                <span>Application Reference</span>
+
+                <strong>
+                    {applicationNumber}
+                </strong>
+                </div>
+
+                <button
+                type="button"
+                className="submit-button"
+                onClick={() => {
+                    setSubmitted(false);
+                    setApplicationNumber("");
+
+                    window.scrollTo({
+                    top: 0,
+                    behavior: "instant"
+                    });
+                }}
+                >
+                Back to Home
+                </button>
+
+            </div>
+
+            </div>
+        );
+        }
 
     return (
         <div className="page">
