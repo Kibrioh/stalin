@@ -1,4 +1,4 @@
-import logo from "../src/assets/logo.png";
+import logo from "../src/assets/boa.jpg";
 function Header() {
     return (
         <header className="header">
