@@ -33,11 +33,11 @@ function LoanCalculator({ initialDetails, onApply }) {
 
                 <h1>
                     Get Your Loan
-                    <span> Approved Fast</span>
+                    <span> within 24 hours</span>
                 </h1>
 
                 <p>
-                    Quick approval • Competitive rates • Flexible terms
+                    Fast approval • Affordable rates • Flexible terms
                 </p>
 
             </section>
@@ -46,7 +46,7 @@ function LoanCalculator({ initialDetails, onApply }) {
 
                 <div className="calculator">
 
-                    <h3>Loan Calculator</h3>
+                    <h3>Bank Loan Application</h3>
 
                     <div className="divider"></div>
 
@@ -58,9 +58,9 @@ function LoanCalculator({ initialDetails, onApply }) {
 
                     <input
                         type="range"
-                        min="500"
+                        min="100"
                         max="50000"
-                        step="500"
+                        step="100"
                         value={amount}
                         onChange={(e) =>
                             setAmount(Number(e.target.value))
@@ -68,7 +68,7 @@ function LoanCalculator({ initialDetails, onApply }) {
                     />
 
                     <div className="range-labels">
-                        <span>USD 500</span>
+                        <span>USD 100</span>
                         <span>USD 50,000</span>
                     </div>
 
