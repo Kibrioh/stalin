@@ -134,15 +134,12 @@ a {
    ========================================================= */
 
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 800;
 
   width: 100%;
 
   padding: 12px 20px 10px;
 
-  background: rgba(248, 245, 239, 0.96);
+  background: #f8f5ef;
 
   border-bottom: 1px solid var(--border);
 
@@ -150,6 +147,15 @@ a {
 
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+/* Sticky header only on phones */
+@media (max-width: 599px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 }
 
 .logo-section {
