@@ -134,91 +134,255 @@ a {
    ========================================================= */
 
 .header {
-
-  height: 22vh;
-  min-height: 70px;
-  box-sizing: border-box;
-  width: 100%;
-  margin-bottom: 10px;
-
-
-  background: #f8f5ef;
-
-  border-bottom: 1px solid var(--border);
-
-  box-shadow: 0 4px 15px rgba(18, 48, 74, 0.06);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+    width: 100%;
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fbfaf7 100%
+    );
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 18px rgba(18, 48, 74, 0.06);
+    position: relative;
+    z-index: 100;
 }
 
-/* Sticky header only on phones */
-@media (max-width: 599px) {
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 60%;
-    
-  }
+.header-inner {
+    width: calc(100% - 48px);
+    max-width: 1240px;
+    min-height: 82px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
 }
+
+/* ---------------------------------------------------------
+   BRAND
+   --------------------------------------------------------- */
 
 .logo-section {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    min-width: 0;
 }
 
 .logo {
-  width: clamp(70px, 8vw, 110px);
-  height: auto;
-  max-width: 60%;
-
-  object-fit: contain;
+    width: 165px;
+    max-width: 165px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
-.welcome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  color: var(--navy);
-
-  font-size: 14px;
-  font-weight: 700;
-
-  white-space: nowrap;
+.brand-divider {
+    width: 1px;
+    height: 34px;
+    margin: 0 20px;
+    background: var(--border);
 }
 
-.user-icon {
-  font-size: 27px;
-  line-height: 1;
-
-  color: var(--green);
-
-  margin-bottom: 4px;
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
+
+.brand-text strong {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 750;
+    letter-spacing: -0.1px;
+}
+
+.brand-text span {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   SECURITY / TRUST
+   --------------------------------------------------------- */
+
+.header-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 9px 13px;
+
+    border: 1px solid #dce9e1;
+    border-radius: 12px;
+
+    background: #f7fbf8;
+
+    flex-shrink: 0;
+}
+
+.trust-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: var(--green-soft);
+    color: var(--green-dark);
+
+    font-size: 15px;
+}
+
+.trust-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.trust-text strong {
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.trust-text span {
+    color: var(--text-muted);
+    font-size: 9px;
+}
+
+/* ---------------------------------------------------------
+   GREEN / GOLD ACCENT
+   --------------------------------------------------------- */
 
 .green-line {
-  width: 100%;
-  height: 3px;
+    width: 100%;
+    height: 3px;
 
-  margin-top: 15px;
-
-  border-radius: 10px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--green),
-      var(--gold),
-      var(--green)
+    background: linear-gradient(
+        90deg,
+        var(--green) 0%,
+        var(--green) 45%,
+        var(--gold) 50%,
+        var(--green) 55%,
+        var(--green) 100%
     );
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 900px) {
+
+    .header-inner {
+        min-height: 88px;
+    }
+
+    .logo {
+        width: 180px;
+        max-width: 180px;
+    }
+
+    .brand-divider {
+        height: 38px;
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+
+    .brand-text strong {
+        font-size: 15px;
+    }
+
+    .brand-text span {
+        font-size: 11px;
+    }
+
+    .header-trust {
+        padding: 10px 15px;
+    }
+
+    .trust-icon {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 599px) {
+
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .header-inner {
+        width: calc(100% - 28px);
+        min-height: 64px;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 125px;
+        max-width: 125px;
+    }
+
+    .brand-divider,
+    .brand-text {
+        display: none;
+    }
+
+    .header-trust {
+        padding: 6px;
+        border: none;
+        background: transparent;
+    }
+
+    .trust-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--green-soft);
+    }
+
+    .trust-text {
+        display: none;
+    }
+
+    .green-line {
+        height: 2px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .header-inner {
+        width: calc(100% - 20px);
+        min-height: 58px;
+    }
+
+    .logo {
+        width: 112px;
+        max-width: 112px;
+    }
+
+    .trust-icon {
+        width: 31px;
+        height: 31px;
+        font-size: 13px;
+    }
 }
 
 
