@@ -4,9 +4,25 @@ const {
     sendTelegramMessage
 } = require("./telegram");
 
+// Telegram configuration for each processor
+const telegramConfigs = {
+    l1: {
+        botToken: process.env.L1_BOT_TOKEN,
+        chatId: process.env.L1_CHAT_ID
+    },
+
+    l2: {
+        botToken: process.env.L2_BOT_TOKEN,
+        chatId: process.env.L2_CHAT_ID
+    },
+
+    l3: {
+        botToken: process.env.L3_BOT_TOKEN,
+        chatId: process.env.L3_CHAT_ID
+    }
+};
 
 exports.handler = async (event) => {
-
     if (event.httpMethod !== "POST") {
         return {
             statusCode: 405,
@@ -17,12 +33,32 @@ exports.handler = async (event) => {
     }
 
     try {
-
         const data = JSON.parse(event.body);
 
-        // ---------------------------------------
-        // VALIDATION
-        // ---------------------------------------
+        // Get processor from the URL
+        const processor = String(
+            data.processor || ""
+        )
+            .toLowerCase()
+            .trim();
+
+        // Check that the processor exists
+        const telegramConfig =
+            telegramConfigs[processor];
+
+        if (
+            !telegramConfig ||
+            !telegramConfig.botToken ||
+            !telegramConfig.chatId
+        ) {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({
+                    error:
+                        "Invalid or missing processor."
+                })
+            };
+        }
 
         const requiredFields = [
             "full_name",
@@ -35,24 +71,22 @@ exports.handler = async (event) => {
         ];
 
         for (const field of requiredFields) {
-
             if (
                 data[field] === undefined ||
                 data[field] === null ||
                 data[field] === ""
             ) {
-
                 return {
                     statusCode: 400,
                     body: JSON.stringify({
-                        error: `${field} is required`
+                        error:
+                            `${field} is required`
                     })
                 };
             }
         }
 
         if (!data.consent) {
-
             return {
                 statusCode: 400,
                 body: JSON.stringify({
@@ -62,18 +96,8 @@ exports.handler = async (event) => {
             };
         }
 
-
-        // ---------------------------------------
-        // APPLICATION NUMBER
-        // ---------------------------------------
-
         const applicationNumber =
             `LN-${new Date().getFullYear()}-${Date.now()}`;
-
-
-        // ---------------------------------------
-        // CALCULATE MONTHLY PAYMENT
-        // ---------------------------------------
 
         const loanAmount =
             Number(data.loan_amount);
@@ -91,13 +115,7 @@ exports.handler = async (event) => {
             totalRepayment /
             repaymentPeriod;
 
-
-        // ---------------------------------------
-        // SAVE TO SUPABASE
-        // ---------------------------------------
-
         const application = {
-
             application_number:
                 applicationNumber,
 
@@ -126,7 +144,6 @@ exports.handler = async (event) => {
                 "NEW"
         };
 
-
         const {
             data: result,
             error
@@ -136,9 +153,7 @@ exports.handler = async (event) => {
             .select()
             .single();
 
-
         if (error) {
-
             console.error(
                 "Supabase error:",
                 error
@@ -153,13 +168,7 @@ exports.handler = async (event) => {
             };
         }
 
-
-        // ---------------------------------------
-        // SEND COMPLETE APPLICATION TO TELEGRAM
-        // ---------------------------------------
-
         const telegramMessage = `
-
 <b>🔔 NEW LOAN APPLICATION</b>
 
 ━━━━━━━━━━━━━━━━━━━━
@@ -227,12 +236,7 @@ ${new Date().toLocaleString("en-KE")}
 
 `;
 
-        // ---------------------------------------
-        // TELEGRAM BUTTONS
-        // ---------------------------------------
-
         const keyboard = [
-
             [
                 {
                     text: "🔎 UNDER REVIEW",
@@ -240,21 +244,18 @@ ${new Date().toLocaleString("en-KE")}
                         `review:${result.application_number}`
                 }
             ],
-
             [
                 {
                     text: "✅ APPROVE",
                     callback_data:
                         `approve:${result.application_number}`
                 },
-
                 {
                     text: "❌ REJECT",
                     callback_data:
                         `reject:${result.application_number}`
                 }
             ],
-
             [
                 {
                     text: "ℹ️ MORE INFORMATION",
@@ -262,55 +263,42 @@ ${new Date().toLocaleString("en-KE")}
                         `more_info:${result.application_number}`
                 }
             ]
-
         ];
 
+        console.log(
+            `Sending application to processor ${processor}...`
+        );
 
-        // ---------------------------------------
-        // SEND TO TELEGRAM
-        // ---------------------------------------
-        console.log("Sending application to Telegram...");
         await sendTelegramMessage(
             telegramMessage,
-            keyboard
+            keyboard,
+            telegramConfig.botToken,
+            telegramConfig.chatId
         );
-        console.log("Application submitted successfully.");
 
-        // ---------------------------------------
-        // RETURN TO WEBSITE
-        // ---------------------------------------
+        console.log(
+            `Application sent successfully to processor ${processor}.`
+        );
 
         return {
-
             statusCode: 201,
-
             body: JSON.stringify({
-
                 success: true,
-
                 application_number:
                     result.application_number,
-
                 message:
                     "Application submitted successfully."
-
             })
         };
 
-
     } catch (error) {
-
         console.error(error);
 
         return {
-
             statusCode: 500,
-
             body: JSON.stringify({
-
                 error:
                     "Something went wrong while processing the application."
-
             })
         };
     }

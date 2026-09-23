@@ -1,13 +1,18 @@
-async function sendTelegramMessage(message, keyboard = null) {
+async function sendTelegramMessage(
+    message,
+    keyboard = null,
+    botToken,
+    chatId
+) {
 
-    const token =
-        process.env.TELEGRAM_BOT_TOKEN;
-
-    const chatId =
-        process.env.TELEGRAM_CHAT_ID;
+    if (!botToken || !chatId) {
+        throw new Error(
+            "Telegram bot configuration is missing."
+        );
+    }
 
     const url =
-        `https://api.telegram.org/bot${token}/sendMessage`;
+        `https://api.telegram.org/bot${botToken}/sendMessage`;
 
     const body = {
         chat_id: chatId,
@@ -32,7 +37,20 @@ async function sendTelegramMessage(message, keyboard = null) {
         body: JSON.stringify(body)
     });
 
-    return response.json();
+    const result = await response.json();
+
+    if (!response.ok || !result.ok) {
+        console.error(
+            "Telegram API error:",
+            result
+        );
+
+        throw new Error(
+            "Failed to send Telegram notification."
+        );
+    }
+
+    return result;
 }
 
 module.exports = {

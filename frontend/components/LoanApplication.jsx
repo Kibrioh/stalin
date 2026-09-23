@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Header from "./header";
-import App from "../src/App.jsx";
 
-function LoanApplication({ loanDetails, onBack }) {
+function LoanApplication({ loanDetails, onBack, processor }) {
 
     const [form, setForm] = useState({
         full_name: "",
@@ -58,7 +57,10 @@ function LoanApplication({ loanDetails, onBack }) {
                             "application/json"
                     },
 
-                    body: JSON.stringify(form)
+                    body: JSON.stringify({
+                        ...form,
+                        processor: processor
+                    })
                 }
             );
 
@@ -71,10 +73,11 @@ function LoanApplication({ loanDetails, onBack }) {
                     "Application failed."
                 );
             }
-            
+
             setMessage(
                 `Application submitted successfully. Reference: ${data.application_number}`
             );
+
             setSubmitted(true);
 
         } catch (error) {
@@ -91,43 +94,43 @@ function LoanApplication({ loanDetails, onBack }) {
         return (
             <div className="application-container success-page">
 
-            <div className="success-card">
+                <div className="success-card">
 
-                <div className="success-icon">
-                ✓
+                    <div className="success-icon">
+                        ✓
+                    </div>
+
+                    <h1>Application Submitted</h1>
+
+                    <p className="success-title">
+                        Your loan application has been submitted successfully.
+                    </p>
+
+                    <p className="success-description">
+                        We have received your application and will review the
+                        information provided. You will be contacted once there is
+                        an update on your application.
+                    </p>
+
+                    <div className="reference-box">
+                        <strong>thank you</strong>
+                    </div>
+
+                    <button
+                        type="button"
+                        className="submit-button"
+                        onClick={() => {
+                            window.location.reload();
+                        }}
+                    >
+                        Back to Home
+                    </button>
+
                 </div>
-
-                <h1>Application Submitted</h1>
-
-                <p className="success-title">
-                Your loan application has been submitted successfully.
-                </p>
-
-                <p className="success-description">
-                We have received your application and will review the
-                information provided. You will be contacted once there is
-                an update on your application.
-                </p>
-
-                <div className="reference-box">
-                    <strong>thank you</strong>
-                </div>
-
-                <button
-                type="button"
-                className="submit-button"
-                onClick={() => {
-                    window.location.reload();
-                }}
-                >
-                Back to Home
-                </button>
-
-            </div>
 
             </div>
         );
-        }
+    }
 
     return (
         <div className="page">
@@ -198,25 +201,11 @@ function LoanApplication({ loanDetails, onBack }) {
                         value={form.employment_status}
                         onChange={handleChange}
                     >
-                        <option>
-                            Self-Employed
-                        </option>
-
-                        <option>
-                            Employed
-                        </option>
-
-                        <option>
-                            Business Owner
-                        </option>
-
-                        <option>
-                            Student
-                        </option>
-
-                        <option>
-                            Other
-                        </option>
+                        <option>Self-Employed</option>
+                        <option>Employed</option>
+                        <option>Business Owner</option>
+                        <option>Student</option>
+                        <option>Other</option>
                     </select>
 
                     <label>
