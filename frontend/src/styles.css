@@ -2013,3 +2013,280 @@ input[type="range"] {
     font-size: 16px;
   }
 }
+
+/* =========================================================
+   FINAL FINTECH HEADER
+   Place this entire section at the VERY BOTTOM of styles.css
+   ========================================================= */
+
+.loan-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e7e9e6;
+    position: relative;
+    z-index: 100;
+}
+
+.loan-header-inner {
+    width: calc(100% - 32px);
+    max-width: 1400px;
+    height: 76px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+/* ---------------------------------------------------------
+   LOGO
+   --------------------------------------------------------- */
+
+.loan-brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.loan-logo {
+    display: block;
+    width: 150px;
+    height: 58px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+/* ---------------------------------------------------------
+   BRAND MESSAGE
+   --------------------------------------------------------- */
+
+.loan-header-message {
+    height: 38px;
+    margin-left: 24px;
+    padding-left: 24px;
+
+    border-left: 1px solid #e1e4e1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+}
+
+.loan-header-message strong {
+    color: #12304a;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.loan-header-message span {
+    color: #7a858c;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+/* ---------------------------------------------------------
+   SECURITY BOX
+   --------------------------------------------------------- */
+
+.loan-security {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #dce8e1;
+    border-radius: 10px;
+
+    background: #f7faf8;
+
+    flex-shrink: 0;
+}
+
+.loan-security-icon {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #e5f3ec;
+
+    font-size: 14px;
+}
+
+.loan-security-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.loan-security-text strong {
+    color: #12304a;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.loan-security-text span {
+    color: #7a858c;
+    font-size: 8px;
+    line-height: 1.2;
+}
+
+/* ---------------------------------------------------------
+   GREEN / GOLD ACCENT LINE
+   --------------------------------------------------------- */
+
+.loan-header-line {
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #16805b 0%,
+        #16805b 70%,
+        #d9a441 85%,
+        #16805b 100%
+    );
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .loan-header-inner {
+        width: calc(100% - 48px);
+        max-width: none;
+        height: 80px;
+    }
+
+    .loan-logo {
+        width: 160px;
+        height: 60px;
+    }
+
+    .loan-header-message {
+        margin-left: 28px;
+        padding-left: 28px;
+    }
+
+    .loan-header-message strong {
+        font-size: 15px;
+    }
+
+    .loan-header-message span {
+        font-size: 11px;
+    }
+
+    .loan-security {
+        padding: 9px 13px;
+    }
+
+    .loan-security-icon {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1199px) and (min-width: 600px) {
+
+    .loan-header-inner {
+        width: calc(100% - 32px);
+        height: 72px;
+    }
+
+    .loan-logo {
+        width: 140px;
+        height: 54px;
+    }
+
+    .loan-header-message {
+        margin-left: 18px;
+        padding-left: 18px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 599px) {
+
+    .loan-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .loan-header-inner {
+        width: calc(100% - 24px);
+        height: 62px;
+    }
+
+    .loan-logo {
+        width: 125px;
+        height: 48px;
+    }
+
+    .loan-header-message {
+        display: none;
+    }
+
+    .loan-security {
+        margin-left: auto;
+        padding: 5px;
+
+        border: none;
+        background: transparent;
+    }
+
+    .loan-security-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+    }
+
+    .loan-security-text {
+        display: none;
+    }
+
+    .loan-header-line {
+        height: 2px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .loan-header-inner {
+        width: calc(100% - 18px);
+        height: 58px;
+    }
+
+    .loan-logo {
+        width: 112px;
+        height: 44px;
+    }
+
+    .loan-security-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+}
