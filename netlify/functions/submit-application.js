@@ -292,13 +292,14 @@ ${new Date().toLocaleString("en-KE")}
         };
 
     } catch (error) {
-        console.error(error);
+        console.error("SUBMIT APPLICATION ERROR:", error);
 
         return {
             statusCode: 500,
             body: JSON.stringify({
-                error:
-                    "Something went wrong while processing the application."
+                error: error.message
+                //error:
+                    //"Something went wrong while processing the application."
             })
         };
     }
