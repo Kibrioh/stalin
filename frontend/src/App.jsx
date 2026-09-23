@@ -17,7 +17,7 @@ function App() {
     // /apply/l1 → "l1"
     // /apply/l2  → "l2"
 
-    let processor = null;
+    let processor = "l1"; // Default processor
 
     if (
         pathParts.length >= 2 &&
