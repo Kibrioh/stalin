@@ -46,6 +46,7 @@ async function sendTelegramMessage(
         );
 
         throw new Error(
+            result.description ||
             "Failed to send Telegram notification."
         );
     }
