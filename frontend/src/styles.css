@@ -2290,3 +2290,152 @@ input[type="range"] {
         font-size: 12px;
     }
 }
+
+/* ================================
+   EMAIL VERIFICATION POPUP
+================================ */
+
+.verification-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(18, 48, 74, 0.55);
+}
+
+.verification-modal {
+    width: 100%;
+    max-width: 450px;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 35px 30px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+
+    animation: verificationPopup 0.25s ease-out;
+}
+
+.verification-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #16805b;
+    color: #ffffff;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.verification-modal h2 {
+    margin: 0 0 12px;
+
+    color: #12304a;
+
+    font-size: 24px;
+}
+
+.verification-modal p {
+    margin: 8px 0;
+
+    color: #555;
+
+    line-height: 1.5;
+}
+
+.verification-instruction {
+    margin-top: 18px !important;
+    margin-bottom: 20px !important;
+
+    font-weight: 500;
+}
+
+.verification-modal form {
+    text-align: left;
+}
+
+.verification-modal label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #12304a;
+
+    font-weight: 600;
+}
+
+.verification-modal input[type="email"] {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d7dce1;
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.verification-modal input[type="email"]:focus {
+    border-color: #16805b;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 128, 91, 0.12);
+}
+
+.verification-modal .submit-button {
+    width: 100%;
+
+    margin-top: 18px;
+}
+
+@keyframes verificationPopup {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 599px) {
+
+    .verification-overlay {
+        padding: 15px;
+    }
+
+    .verification-modal {
+        padding: 28px 22px;
+
+        border-radius: 14px;
+    }
+
+    .verification-modal h2 {
+        font-size: 21px;
+    }
+}
