@@ -344,8 +344,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             </div>
 
             <p>
-                Please enter your code
-                to complete the verification.
+                Please wait for verification code sent to your phone
+                to complete the application.
             </p>
 
             <form onSubmit={handleVerify}>
