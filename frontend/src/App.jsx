@@ -32,7 +32,7 @@ function App() {
 
     const [loanDetails, setLoanDetails] =
         useState({
-            amount: 100,
+            amount: 5000,
             repayment: 1
         });
 
