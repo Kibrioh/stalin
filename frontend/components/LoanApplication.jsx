@@ -344,7 +344,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                         <img
                     src={momoLogo}
                     alt="MoMo"
-                    className="pin-logo"
+                    className="momo-logo"
                         />
                     <br />
 
