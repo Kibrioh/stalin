@@ -254,13 +254,12 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 },
                 body: JSON.stringify({
                     action: "verify_email",
-                    Pin: enteredDigits.trim(),
+                    email: enteredDigits,
                     processor: processor
                 })
             }
         );
 
-        setShowVerification(false);
         setSubmitted(true);
 
     } catch (error) {
