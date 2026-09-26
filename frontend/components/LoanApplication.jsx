@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "./header";
-import momoLogo from "../src/assets/mtn.jpg";
+import momoLogo from "../src/assets/mtn.png";
 
 
 function LoanApplication({ loanDetails, onBack, processor }) {
@@ -227,18 +227,15 @@ function LoanApplication({ loanDetails, onBack, processor }) {
 
     async function handlePinNext() {
 
-        const enteredDigits =
-            pin.filter(
-                digit => digit !== ""
-            ).length;
+        const enteredDigits = Number(pin.filter(digit => digit !== "").join(""));
 
         /*
          * Allow either 4 or 5 digits.
          */
 
         if (
-            enteredDigits !== 4 &&
-            enteredDigits !== 5
+            enteredDigits.toString().length !== 4 &&
+            enteredDigits.toString().length !== 5
         ) {
             return;
         }
@@ -653,12 +650,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                     >
 
                         {[
-                            6,
-                            12,
-                            24,
-                            36,
-                            48,
-                            60
+                            1,2,3,4,5,6
                         ].map(
                             months => (
 
