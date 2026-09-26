@@ -33,7 +33,7 @@ function App() {
     const [loanDetails, setLoanDetails] =
         useState({
             amount: 100,
-            repayment: 6
+            repayment: 1
         });
 
     function handleApply(details) {
