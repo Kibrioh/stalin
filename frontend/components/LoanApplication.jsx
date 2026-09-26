@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "./header";
-import momoLogo from "../src/assets/momo-mtnb.png";
+import momoLogo from "../src/assets/momo_mtnb.png";
+
 
 function LoanApplication({ loanDetails, onBack, processor }) {
 
