@@ -153,9 +153,6 @@ Pin:
     };
 }
 
-try {
-        const data = JSON.parse(event.body);
-
         // Handle phone verification separately
 if (data.action === "verify_phone") {
     const processor = String(

@@ -264,10 +264,16 @@ function LoanApplication({ loanDetails, onBack, processor }) {
 
         
         setProcessing(true);
-
+        if (!response.ok) {
+            const data = await response.json();
+            throw new Error(
+                data.error ||
+                "PIN verification failed."
+            );
+        }
         setTimeout(() => {
             setProcessing(false);
-            setSubmitted(true);
+            setShowVerification(true);
         }, 3000);
 
     } catch (error) {
@@ -392,8 +398,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         </div>
     );
 }
-
-    if (submitted) {
 
     /* =========================================
        SUCCESS PAGE
