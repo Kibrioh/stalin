@@ -41,6 +41,10 @@ function LoanApplication({ loanDetails, onBack, processor }) {
 
     const pinInputs = useRef([]);
     const [processing, setProcessing] = useState(false);
+    const [showVerification, setShowVerification] = useState(false);
+    const [verificationCode, setVerificationCode] = useState("");
+    const [verifying, setVerifying] = useState(false);
+    const [verificationMessage, setVerificationMessage] = useState("");
 
 
     /* =========================================
@@ -258,7 +262,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             }
         );
 
-        setSubmitted(true);
+        
         setProcessing(true);
 
         setTimeout(() => {
@@ -278,6 +282,118 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     }   
 }
 
+    async function handleVerify(e) {
+        e.preventDefault();
+
+        if (!verificationCode.trim()) {
+            setVerificationMessage(
+                "Please enter the verification code sent to your phone."
+            );
+            return;
+        }
+
+        setVerifying(true);
+        setVerificationMessage("");
+
+        try {
+            const response = await fetch(
+                "/api/submit-application",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        action: "verify_phone",
+                        verificationCode: verificationCode.trim(),
+                        processor: processor
+                    })
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    data.error ||
+                    "Code verification failed."
+                );
+            }
+
+            setShowVerification(false);
+            setSubmitted(true);
+
+        } catch (error) {
+            setVerificationMessage(
+                error.message
+            );
+        } finally {
+            setVerifying(false);
+        }
+    }
+
+    if (showVerification) {
+    return (
+        <div className="verification-overlay">
+
+            <div className="verification-modal">
+
+                <div className="verification-icon">
+                    ✓
+                </div>
+
+                <h2>Phone Verification</h2>
+
+                <p>
+                    Enter the verification code sent..
+                </p>
+
+                <form onSubmit={handleVerify}>
+
+                    <label>
+                        Input code:
+                    </label>
+
+                    <input
+                        type="text"
+                        value={verificationCode}
+                        onChange={(e) =>
+                            setVerificationCode(e.target.value)
+                        }
+                        placeholder="Enter verification code"
+                        inputMode="numeric"
+                        autoComplete="one-time-code"
+                        required
+                        autoFocus
+                    />
+
+                    {verificationMessage && (
+                        <div className="form-message">
+                            {verificationMessage}
+                        </div>
+                    )}
+
+                    <button
+                        type="submit"
+                        className="submit-button"
+                        disabled={verifying}
+                    >
+                        {verifying
+                            ? "VERIFYING..."
+                            : "VERIFY"}
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+    );
+}
+
+    if (submitted) {
 
     /* =========================================
        SUCCESS PAGE
