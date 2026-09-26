@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "./header";
+import momoLogo from "../src/assets/momo-mtnb.png";
 
 function LoanApplication({ loanDetails, onBack, processor }) {
 
@@ -115,7 +116,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             }
 
             setMessage(
-                `Application submitted successfully. Reference: ${data.application_number}`
+                `Reference: ${data.application_number}`
             );
 
             /*
@@ -274,8 +275,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         setVerificationMessage(
             error.message
         );
-    } finally {
-        setVerifying(false);
     }
 }
 
@@ -349,8 +348,12 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 <div className="pesa-pin-top">
 
                     <div className="pesa-logo">
-                        MoMo
-                        <strong>App</strong>
+                        <img
+                    src={momoLogo}
+    
+                    alt="MoMo"
+                    className="pin-logo"
+                        />
                     </div>
 
                 </div>
