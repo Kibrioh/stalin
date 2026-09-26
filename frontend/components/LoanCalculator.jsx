@@ -59,7 +59,7 @@ function LoanCalculator({ initialDetails, onApply }) {
                     <input
                         type="range"
                         min="100"
-                        max="50000"
+                        max="5000"
                         step="100"
                         value={amount}
                         onChange={(e) =>
@@ -69,7 +69,7 @@ function LoanCalculator({ initialDetails, onApply }) {
 
                     <div className="range-labels">
                         <span>USD 100</span>
-                        <span>USD 50,000</span>
+                        <span>USD 5000</span>
                     </div>
 
                     <label>LOAN TERM</label>
@@ -80,7 +80,7 @@ function LoanCalculator({ initialDetails, onApply }) {
 
                     <div className="term-buttons">
 
-                        {[6, 12, 24, 36, 48, 60].map(
+                        {[1, 2, 3, 4, 5, 6].map(
                             (months) => (
 
                                 <button
