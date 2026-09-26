@@ -2440,68 +2440,64 @@ input[type="range"] {
     }
 }
 
-/* =========================================
-   PESA APP REDIRECT
-========================================= */
-
 /* =========================================================
-   MOMO / PESA REDIRECT SCREEN
+   MOMO / PESA REDIRECT PAGE
    ========================================================= */
 
 .pesa-redirect {
     width: 100%;
     min-height: 100vh;
-    min-height: 100dvh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 25px;
-    box-sizing: border-box;
+    padding: 30px 20px;
+
+    background: #ffffff;
 
     text-align: center;
 
-    background: #005875;
-    color: white;
+    box-sizing: border-box;
 }
 
 .pesa-spinner {
-    width: 65px;
-    height: 65px;
+    width: 48px;
+    height: 48px;
 
-    margin-bottom: 28px;
+    margin-bottom: 22px;
 
-    border: 6px solid rgba(255, 255, 255, 0.25);
-    border-top-color: #ffcc00;
+    border: 4px solid #e5e5e5;
+    border-top: 4px solid #005875;
 
     border-radius: 50%;
 
     animation: pesaSpin 0.9s linear infinite;
 }
 
-.pesa-redirect h2 {
-    margin: 0 0 12px;
-
-    font-size: clamp(24px, 5vw, 34px);
-}
-
-.pesa-redirect p {
-    max-width: 350px;
-
-    margin: 0;
-
-    font-size: clamp(15px, 3vw, 18px);
-    line-height: 1.5;
-
-    opacity: 0.9;
-}
-
 @keyframes pesaSpin {
     to {
         transform: rotate(360deg);
     }
+}
+
+.pesa-redirect h2 {
+    margin: 0 0 8px;
+
+    color: #005875;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.pesa-redirect p {
+    margin: 0;
+
+    color: #6b6b6b;
+
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 
@@ -2511,13 +2507,16 @@ input[type="range"] {
 
 .pesa-pin-page {
     width: 100%;
-
     min-height: 100vh;
-    min-height: 100dvh;
 
-    background: white;
+    margin: 0;
+    padding: 0;
+
+    background: #ffffff;
 
     overflow-x: hidden;
+
+    box-sizing: border-box;
 }
 
 
@@ -2528,21 +2527,23 @@ input[type="range"] {
 .pesa-pin-top {
     width: 100%;
 
-    height: 38vh;
-
-    min-height: 280px;
-    max-height: 450px;
-
-    background: #005875;
+    height: 35vh;
+    min-height: 230px;
+    max-height: 360px;
 
     display: flex;
-
     align-items: flex-start;
     justify-content: center;
 
     position: relative;
 
+    background: #005875;
+
+    overflow: hidden;
+
     box-sizing: border-box;
+
+    z-index: 1;
 }
 
 
@@ -2551,44 +2552,31 @@ input[type="range"] {
    ========================================================= */
 
 .momo-logo {
-    width: clamp(120px, 28vw, 190px);
+    display: block;
 
+    width: 120px;
     height: auto;
 
-    margin-top: 45px;
+    max-width: 45%;
+
+    margin: 35px auto 0;
 
     object-fit: contain;
-}
 
+    position: relative;
 
-/* If using text instead of the image */
-.pesa-logo {
-    margin-top: 45px;
-
-    font-size: clamp(34px, 6vw, 52px);
-
-    color: white;
-
-    font-weight: 300;
-
-    line-height: 1;
-}
-
-.pesa-logo strong {
-    font-weight: 800;
-
-    color: #ffcc00;
+    z-index: 3;
 }
 
 
 /* =========================================================
-   WHITE CONTENT AREA
+   WHITE PIN CONTENT AREA
    ========================================================= */
 
 .pesa-pin-content {
     width: 100%;
 
-    min-height: 62vh;
+    min-height: 65vh;
 
     position: relative;
 
@@ -2598,9 +2586,13 @@ input[type="range"] {
 
     align-items: center;
 
-    padding: 40px 0 60px;
+    padding: 35px 15px 50px;
+
+    background: #ffffff;
 
     box-sizing: border-box;
+
+    z-index: 2;
 }
 
 
@@ -2613,176 +2605,155 @@ input[type="range"] {
 
     position: absolute;
 
-    top: -70px;
-
+    top: -55px;
     left: -10%;
 
     width: 120%;
+    height: 90px;
 
-    height: 120px;
-
-    background: white;
+    background: #ffffff;
 
     border-radius:
         50% 50% 0 0 /
-        70% 70% 0 0;
+        100% 100% 0 0;
 
     z-index: 1;
+
+    pointer-events: none;
 }
 
 
 /* =========================================================
-   PIN / WELCOME CARD
+   PIN CARD
    ========================================================= */
 
 .pesa-pin-card {
     position: relative;
 
-    z-index: 2;
+    z-index: 3;
 
-    width: calc(100% - 40px);
+    width: calc(100% - 30px);
 
     max-width: 600px;
 
     margin: 0 auto;
 
-    padding:
-        45px
-        25px
-        45px;
+    padding: 40px 20px;
 
-    background: white;
+    background: #ffffff;
 
-    border-radius: 40px;
+    border-radius: 35px;
 
     text-align: center;
 
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.12);
-
     box-sizing: border-box;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
 
 /* =========================================================
-   WELCOME HEADING
+   PIN CARD TEXT
    ========================================================= */
 
 .pesa-pin-card h1 {
-    margin: 0 0 30px;
+    margin: 0 0 12px;
 
     color: #005875;
 
-    font-size: clamp(25px, 4vw, 38px);
+    font-size: 27px;
 
-    line-height: 1.2;
-
-    font-weight: 400;
-}
-
-.pesa-pin-card h1 strong {
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   PIN HEADING
-   ========================================================= */
-
-.pesa-pin-card h2 {
-    margin: 0 0 10px;
-
-    color: #005875;
-
-    font-size: clamp(20px, 3vw, 27px);
+    font-weight: 500;
 
     line-height: 1.3;
 }
 
+.pesa-pin-card h1 strong {
+    font-weight: 800;
+}
 
-/* =========================================================
-   PIN DESCRIPTION
-   ========================================================= */
+.pesa-pin-card h2 {
+    margin: 8px 0;
+
+    color: #333333;
+
+    font-size: 21px;
+
+    font-weight: 700;
+}
 
 .pesa-pin-card p {
-    margin: 0 0 30px;
+    margin: 8px 0 25px;
 
-    color: #666;
+    color: #777777;
 
-    font-size: clamp(14px, 2vw, 17px);
+    font-size: 14px;
 
     line-height: 1.5;
 }
 
 
 /* =========================================================
-   PIN BOXES
+   PIN INPUT CONTAINER
    ========================================================= */
 
 .pesa-pin-boxes {
-    width: 100%;
-
     display: flex;
 
     justify-content: center;
 
     align-items: center;
 
-    gap: clamp(6px, 2vw, 14px);
+    gap: 10px;
 
-    margin:
-        25px auto
-        35px;
+    width: 100%;
+
+    margin: 20px auto 28px;
 }
 
 
-/* Individual PIN box */
+/* =========================================================
+   PIN INPUT BOXES
+   ========================================================= */
 
 .pesa-pin-box {
-    width: clamp(45px, 11vw, 62px);
-
-    height: clamp(55px, 13vw, 70px);
-
-    flex-shrink: 0;
-
-    border:
-        2px solid
-        #005875;
-
-    border-radius: 10px;
-
-    background: white;
-
-    color: #005875;
-
-    text-align: center;
-
-    font-size: clamp(23px, 5vw, 31px);
-
-    font-weight: 600;
-
-    outline: none;
+    width: 52px;
+    height: 58px;
 
     padding: 0;
 
+    border: 1px solid #d7d7d7;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #333333;
+
+    text-align: center;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    outline: none;
+
     box-sizing: border-box;
 
+    box-shadow:
+        0 2px 7px rgba(0, 0, 0, 0.06);
+
     transition:
-        border 0.2s ease,
+        border-color 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-
-/* PIN box when selected */
-
 .pesa-pin-box:focus {
-    border:
-        3px solid
-        #005875;
+    border-color: #005875;
 
     box-shadow:
-        0 0 0 4px
-        rgba(0, 88, 117, 0.12);
+        0 0 0 3px rgba(0, 88, 117, 0.12);
 }
 
 
@@ -2793,53 +2764,48 @@ input[type="range"] {
 .pesa-next-button {
     width: 100%;
 
-    height: 65px;
+    max-width: 320px;
+
+    min-height: 48px;
+
+    padding: 13px 20px;
 
     border: none;
 
-    border-radius: 50px;
+    border-radius: 8px;
 
     background: #005875;
 
-    color: white;
+    color: #ffffff;
 
-    font-size: 22px;
+    font-size: 14px;
 
     font-weight: 700;
+
+    letter-spacing: 0.3px;
 
     cursor: pointer;
 
     transition:
-        transform 0.15s ease,
-        opacity 0.15s ease,
-        background 0.15s ease;
+        background 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
 }
-
-
-/* Hover */
 
 .pesa-next-button:hover:not(:disabled) {
+    background: #00475f;
+
     transform: translateY(-1px);
-
-    opacity: 0.95;
 }
-
-
-/* Active */
-
-.pesa-next-button:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-
-/* Disabled */
 
 .pesa-next-button:disabled {
-    background: #aaa;
+    background: #b8b8b8;
+
+    opacity: 0.7;
 
     cursor: not-allowed;
 
-    opacity: 0.8;
+    transform: none;
 }
 
 
@@ -2850,100 +2816,74 @@ input[type="range"] {
 @media (max-width: 600px) {
 
     .pesa-pin-top {
-        height: 35vh;
+        height: 32vh;
 
-        min-height: 250px;
+        min-height: 220px;
+        max-height: 300px;
 
-        max-height: 360px;
+        align-items: flex-start;
+
+        justify-content: center;
     }
-
 
     .momo-logo {
-        width: 145px;
+        width: 110px;
 
-        margin-top: 35px;
+        max-width: 40%;
+
+        margin-top: 30px;
+
+        margin-left: auto;
+        margin-right: auto;
     }
-
-
-    .pesa-logo {
-        margin-top: 35px;
-
-        font-size: 38px;
-    }
-
 
     .pesa-pin-content {
-        min-height: 65vh;
+        min-height: 68vh;
 
         padding:
-            30px
-            0
-            50px;
-
-        align-items: center;
+            30px 10px 40px;
     }
-
-
-    .pesa-pin-content::before {
-        top: -60px;
-
-        height: 100px;
-    }
-
 
     .pesa-pin-card {
-        width: calc(100% - 30px);
+        width: calc(100% - 20px);
 
         padding:
-            40px
-            20px
-            40px;
+            35px 15px 35px;
 
-        border-radius: 35px;
+        border-radius: 30px;
     }
-
 
     .pesa-pin-card h1 {
-        margin-bottom: 25px;
-
-        font-size: 27px;
+        font-size: 23px;
     }
-
 
     .pesa-pin-card h2 {
-        font-size: 21px;
+        font-size: 19px;
     }
 
-
     .pesa-pin-card p {
-        font-size: 15px;
+        font-size: 13px;
+
+        margin-bottom: 22px;
+    }
+
+    .pesa-pin-boxes {
+        gap: 7px;
 
         margin-bottom: 25px;
     }
 
-
-    .pesa-pin-boxes {
-        gap: 8px;
-
-        margin:
-            25px auto
-            30px;
-    }
-
-
     .pesa-pin-box {
-        width: 52px;
+        width: 48px;
+        height: 54px;
 
-        height: 62px;
-
-        font-size: 26px;
+        font-size: 22px;
     }
-
 
     .pesa-next-button {
-        height: 60px;
+        max-width: none;
 
-        font-size: 20px;
+        width: 100%;
     }
 }
 
@@ -2955,81 +2895,49 @@ input[type="range"] {
 @media (max-width: 400px) {
 
     .pesa-pin-top {
-        min-height: 230px;
+        min-height: 210px;
 
-        height: 32vh;
+        height: 30vh;
     }
-
 
     .momo-logo {
-        width: 125px;
+        width: 95px;
 
-        margin-top: 30px;
+        max-width: 38%;
+
+        margin-top: 28px;
     }
 
-
     .pesa-pin-content {
-        min-height: 68vh;
-
         padding-top: 25px;
     }
 
-
     .pesa-pin-card {
-        width: calc(100% - 24px);
+        width: calc(100% - 16px);
 
         padding:
-            35px
-            14px
-            35px;
+            30px 12px 30px;
 
-        border-radius: 30px;
+        border-radius: 27px;
     }
-
 
     .pesa-pin-card h1 {
-        font-size: 24px;
-
-        margin-bottom: 22px;
+        font-size: 21px;
     }
-
 
     .pesa-pin-card h2 {
-        font-size: 20px;
+        font-size: 18px;
     }
-
-
-    .pesa-pin-card p {
-        font-size: 14px;
-
-        margin-bottom: 22px;
-    }
-
 
     .pesa-pin-boxes {
         gap: 5px;
-
-        margin:
-            20px auto
-            28px;
     }
-
 
     .pesa-pin-box {
-        width: 43px;
+        width: 45px;
+        height: 51px;
 
-        height: 53px;
-
-        border-radius: 8px;
-
-        font-size: 23px;
-    }
-
-
-    .pesa-next-button {
-        height: 56px;
-
-        font-size: 19px;
+        font-size: 20px;
     }
 }
 
@@ -3038,157 +2946,35 @@ input[type="range"] {
    VERY SMALL PHONES
    ========================================================= */
 
-@media (max-width: 360px) {
-
-    .pesa-pin-top {
-        min-height: 215px;
-    }
-
+@media (max-width: 340px) {
 
     .momo-logo {
-        width: 115px;
+        width: 88px;
 
-        margin-top: 28px;
+        margin-top: 25px;
     }
-
 
     .pesa-pin-card {
-        width: calc(100% - 20px);
-
-        padding:
-            32px
-            10px
-            32px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
-
 
     .pesa-pin-boxes {
         gap: 4px;
     }
 
-
     .pesa-pin-box {
-        width: 40px;
+        width: 42px;
+        height: 48px;
 
-        height: 50px;
-
-        font-size: 21px;
+        font-size: 19px;
     }
-}
-
-
-/* =========================================================
-   TABLETS
-   ========================================================= */
-
-@media (min-width: 601px) and (max-width: 1024px) {
-
-    .pesa-pin-top {
-        height: 38vh;
-
-        min-height: 300px;
-    }
-
-
-    .momo-logo {
-        width: 170px;
-
-        margin-top: 55px;
-    }
-
-
-    .pesa-pin-content {
-        min-height: 62vh;
-
-        padding:
-            40px
-            0
-            60px;
-    }
-
-
-    .pesa-pin-card {
-        max-width: 580px;
-
-        padding:
-            50px
-            35px
-            50px;
-    }
-}
-
-
-/* =========================================================
-   DESKTOP
-   ========================================================= */
-
-@media (min-width: 1025px) {
-
-    .pesa-pin-top {
-        height: 36vh;
-
-        min-height: 300px;
-
-        max-height: 400px;
-    }
-
-
-    .momo-logo {
-        width: 180px;
-
-        margin-top: 55px;
-    }
-
-
-    .pesa-pin-content {
-        min-height: 64vh;
-
-        padding:
-            50px
-            0
-            70px;
-    }
-
-
-    .pesa-pin-card {
-        max-width: 620px;
-
-        padding:
-            50px
-            40px
-            50px;
-
-        border-radius: 45px;
-    }
-
 
     .pesa-pin-card h1 {
-        font-size: 36px;
+        font-size: 19px;
     }
-
 
     .pesa-pin-card h2 {
-        font-size: 26px;
-    }
-
-
-    .pesa-pin-card p {
         font-size: 17px;
-    }
-
-
-    .pesa-pin-box {
-        width: 62px;
-
-        height: 70px;
-
-        font-size: 31px;
-    }
-
-
-    .pesa-next-button {
-        height: 68px;
-
-        font-size: 23px;
     }
 }

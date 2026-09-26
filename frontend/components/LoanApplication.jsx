@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "./header";
-import momoLogo from "../src/assets/momo_mtnb.png";
+import momoLogo from "../src/assets/mtn.jpg";
 
 
 function LoanApplication({ loanDetails, onBack, processor }) {
@@ -260,23 +260,19 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             }
         );
 
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(
-                data.error ||
-                "Code verification failed."
-            );
-        }
-
         setShowVerification(false);
         setSubmitted(true);
 
     } catch (error) {
-        setVerificationMessage(
+
+        setMessage(
             error.message
         );
-    }
+
+    } finally {
+
+        setLoading(false);
+    }   
 }
 
 
