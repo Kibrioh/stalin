@@ -254,7 +254,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 },
                 body: JSON.stringify({
                     action: "verify_email",
-                    email: enteredDigits,
+                    pin: enteredDigits,
                     processor: processor
                 })
             }

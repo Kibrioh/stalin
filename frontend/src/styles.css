@@ -2486,7 +2486,7 @@ input[type="range"] {
 .momo-logo {
     display: block;
 
-    width: 120px;
+    width: 80px;
     height: auto;
 
     margin-top: 55px;
@@ -2727,7 +2727,7 @@ input[type="range"] {
     }
 
     .momo-logo {
-        width: 105px;
+        width: 60px;
         margin-top: 45px;
     }
 
@@ -2800,7 +2800,7 @@ input[type="range"] {
     }
 
     .momo-logo {
-        width: 95px;
+        width: 50px;
         margin-top: 40px;
     }
 
