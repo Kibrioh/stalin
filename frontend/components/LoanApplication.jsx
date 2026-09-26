@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "./header";
-import momoLogo from "../src/assets/mtn.png";
+import momoLogo from "../src/assets/mom.png";
 
 
 function LoanApplication({ loanDetails, onBack, processor }) {
@@ -343,10 +343,18 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                     <div className="pesa-logo">
                         <img
                     src={momoLogo}
-    
                     alt="MoMo"
                     className="pin-logo"
                         />
+                    <br />
+
+                    <strong style={{ color: "yellow" }}>
+                        MoMo
+                    </strong>
+                    <br />
+                    <span style={{ color: "yellow" }}>
+                        from MTN
+                    </span>
                     </div>
 
                 </div>

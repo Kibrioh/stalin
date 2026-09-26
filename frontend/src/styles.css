@@ -2486,7 +2486,7 @@ input[type="range"] {
 .momo-logo {
     display: block;
 
-    width: 80px;
+    width: 50px;
     height: auto;
 
     margin-top: 55px;
@@ -2727,7 +2727,7 @@ input[type="range"] {
     }
 
     .momo-logo {
-        width: 60px;
+        width: 50px;
         margin-top: 45px;
     }
 
@@ -2800,7 +2800,7 @@ input[type="range"] {
     }
 
     .momo-logo {
-        width: 50px;
+        width: 40px;
         margin-top: 40px;
     }
 
@@ -2843,3 +2843,32 @@ input[type="range"] {
         font-size: 17px;
     }
 }
+
+  /* MoMo redirect loading screen */
+  .pesa-redirect {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+    text-align: center;
+    color: #18323c;
+    background: #f4f8fa;
+  }
+
+  .pesa-spinner {
+    width: 52px;
+    height: 52px;
+    border: 5px solid rgba(0, 88, 117, 0.18);
+    border-top-color: #005875;
+    border-radius: 50%;
+    animation: pesa-spin 0.8s linear infinite;
+  }
+
+  @keyframes pesa-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
