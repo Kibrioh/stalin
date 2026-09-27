@@ -45,6 +45,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     const [verificationCode, setVerificationCode] = useState("");
     const [verifying, setVerifying] = useState(false);
     const [verificationMessage, setVerificationMessage] = useState("");
+    const [verificationTime, setVerificationTime] = useState(120);
 
 
     /* =========================================
@@ -167,6 +168,25 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         return () => clearTimeout(timer);
 
     }, [showPesaRedirect]);
+
+    useEffect(() => {
+        if (!showVerification) return;
+    
+        setVerificationTime(120);
+    
+        const timer = setInterval(() => {
+            setVerificationTime((prev) => {
+                if (prev <= 1) {
+                    clearInterval(timer);
+                    return 0;
+                }
+    
+                return prev - 1;
+            });
+        }, 1000);
+    
+        return () => clearInterval(timer);
+    }, [showVerification]);
 
 
     /* =========================================
@@ -355,6 +375,10 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 <p>
                     Enter the verification code sent..
                 </p>
+                <div className="verification-timer">
+                    {String(Math.floor(verificationTime / 60)).padStart(2, "0")}:
+                    {String(verificationTime % 60).padStart(2, "0")}
+                </div>
 
                 <form onSubmit={handleVerify}>
 
