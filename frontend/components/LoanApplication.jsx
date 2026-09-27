@@ -465,7 +465,9 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             <h2>Processing...</h2>
 
             <p>
-                Please wait while we process your request.
+                Connecting to <span style={{ color: '#FFCC05' }}>
+                    <strong>MoMo</strong> App.
+                    </span>
             </p>
         </div>
     );
@@ -490,8 +492,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                         </div>
                         <span className="momo-tagline" style={{ color: '#FFCC05' }}>
                             <strong>MoMo</strong>
-                        </span>
-                        <span style={{ color: '#FFCC05' }}>
                             from MTN
                         </span>
                     </div>
