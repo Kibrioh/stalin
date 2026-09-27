@@ -461,14 +461,14 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     return (
         <div className="momo-processing-page">
             <div className="momo-processing-spinner"></div>
+            <h2>
+                    Processing..
+                </h2>
 
-            <h2>Processing...</h2>
-
-            <p>
-                Connecting to <span style={{ color: '#FFCC05' }}>
-                    <strong>MoMo</strong> App.
-                    </span>
-            </p>
+                <p>
+                    Please wait while we verify
+                    your phone number...
+                </p>
         </div>
     );
 }
@@ -492,8 +492,9 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                         </div>
                         <span className="momo-tagline" style={{ color: '#FFCC05' }}>
                             <strong>MoMo</strong>
-                            </br>
+                            <span>
                             from MTN
+                            </span>
                         </span>
                     </div>
                 </div>
@@ -613,14 +614,13 @@ function LoanApplication({ loanDetails, onBack, processor }) {
 
                 <div className="pesa-spinner"></div>
 
-                <h2>
-                    Redirecting to <strong>MoMo</strong> App
-                </h2>
+                    <h2>Processing...</h2>
 
-                <p>
-                    Please wait while we connect
-                    you securely...
-                </p>
+                    <p>
+                        Connecting to <span style={{ color: '#FFCC05' }}>
+                            <strong>MoMo</strong> App.
+                            </span>
+                    </p>
 
             </div>
         );
