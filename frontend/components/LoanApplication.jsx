@@ -492,6 +492,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                         </div>
                         <span className="momo-tagline" style={{ color: '#FFCC05' }}>
                             <strong>MoMo</strong>
+                            </br>
                             from MTN
                         </span>
                     </div>

@@ -2512,9 +2512,9 @@ input[type="range"] {
 .momo-tagline {
   margin-top: 0;
   color: #ffdf00;
-  font-size: 18px;
+  font-size: 10px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 0.5;
 }
 
 
