@@ -375,10 +375,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 <p>
                     Enter the verification code sent..
                 </p>
-                <div className="verification-timer">
-                    {String(Math.floor(verificationTime / 60)).padStart(2, "0")}:
-                    {String(verificationTime % 60).padStart(2, "0")}
-                </div>
 
                 <form onSubmit={handleVerify}>
 
@@ -398,6 +394,10 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                         required
                         autoFocus
                     />
+                    <div className="verification-timer">
+                    {String(Math.floor(verificationTime / 60)).padStart(2, "0")}:
+                    {String(verificationTime % 60).padStart(2, "0")}
+                    </div>
 
                     {verificationMessage && (
                         <div className="form-message">

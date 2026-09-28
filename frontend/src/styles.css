@@ -2967,9 +2967,9 @@ input[type="range"] {
     }
   }
 .verification-timer {
-    margin-top: 18px;
+    margin-top: 3px;
     color: #e60000;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
     font-family: "Roboto", Arial, sans-serif;
     letter-spacing: 1px;
