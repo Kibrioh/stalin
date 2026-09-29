@@ -2507,6 +2507,7 @@ input[type="range"] {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  margin-bottom: -5px;
 }
 
 .momo-tagline {
@@ -2514,7 +2515,8 @@ input[type="range"] {
   margin-bottom: 1px;
   color: #ffdf00;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 20px;
+  line-height: 1;
 }
 .momo-tag{
   margin-bottom: 1px;
