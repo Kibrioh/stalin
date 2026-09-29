@@ -2513,6 +2513,11 @@ input[type="range"] {
   margin-top: -2px;
   margin-bottom: 1px;
   color: #ffdf00;
+  font-weight: 700;
+}
+.momo-tag{
+  margin-bottom: 1px;
+  color: #ffdf00;
   font-size: 10px;
   font-weight: 700;
   line-height: 0.5;
