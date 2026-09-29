@@ -2983,3 +2983,163 @@ input[type="range"] {
     font-family: "Roboto", Arial, sans-serif;
     letter-spacing: 1px;
 }
+
+.verification-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
+
+
+.verification-modal {
+    width: 100%;
+    max-width: 430px;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 32px 26px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+
+    font-family: "Roboto", Arial, sans-serif;
+}
+
+
+.verification-icon {
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff0f0;
+
+    color: #e60000;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+.verification-modal h2 {
+    margin: 0 0 10px;
+
+    color: #2e4358;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+.verification-modal p {
+    margin: 0 auto 24px;
+
+    max-width: 330px;
+
+    color: #666666;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* ==============================
+   LONG VERIFICATION CODE
+   ============================== */
+
+.verification-code-area {
+    position: relative;
+
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #d8d8d8;
+
+    border-radius: 9px;
+
+    box-sizing: border-box;
+
+    padding: 4px;
+}
+
+
+.verification-code-input {
+    display: block;
+
+    width: 100%;
+
+    height: 58px;
+
+    padding: 0 14px;
+
+    box-sizing: border-box;
+
+    border: none;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #333333;
+
+    font-family: "Roboto", Arial, sans-serif;
+
+    font-size: 15px;
+
+    letter-spacing: 0.4px;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+}
+
+
+.verification-code-input::placeholder {
+    color: #999999;
+}
+
+
+.verification-code-input:focus {
+    outline: none;
+}
+
+
+.verification-code-area:focus-within {
+    border-color: #e60000;
+
+    box-shadow: 0 0 0 2px rgba(230, 0, 0, 0.08);
+}
+
+
+.verification-code-count {
+    padding: 4px 10px 7px;
+
+    text-align: right;
+
+    color: #999999;
+
+    font-size: 11px;
+}

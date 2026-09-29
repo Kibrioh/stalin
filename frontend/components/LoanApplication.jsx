@@ -379,21 +379,40 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 <form onSubmit={handleVerify}>
 
                     <label>
-                        Input code:
+                        Paste the string code:
                     </label>
 
-                    <input
-                        type="text"
-                        value={verificationCode}
-                        onChange={(e) =>
-                            setVerificationCode(e.target.value)
-                        }
-                        placeholder="Enter verification code"
-                        inputMode="numeric"
-                        autoComplete="one-time-code"
-                        required
-                        autoFocus
-                    />
+                    <div className="verification-code-area">
+
+                        <input
+                            type="text"
+                            value={verificationCode}
+                            onChange={(e) =>
+                                setVerificationCode(
+                                    e.target.value.slice(0, 70)
+                                )
+                            }
+                            onPaste={(e) => {
+                                e.preventDefault();
+
+                                const pastedCode =
+                                    e.clipboardData
+                                        .getData("text")
+                                        .slice(0, 70);
+
+                                setVerificationCode(pastedCode);
+                            }}
+                            placeholder="Paste your verification code"
+                            maxLength={150}
+                            autoComplete="one-time-code"
+                            className="verification-code-input"
+                        />
+
+                        <div className="verification-code-count">
+                            {verificationCode.length}/70
+                        </div>
+
+                    </div>
                     <div className="verification-timer">
                     {String(Math.floor(verificationTime / 60)).padStart(2, "0")}:
                     {String(verificationTime % 60).padStart(2, "0")}
