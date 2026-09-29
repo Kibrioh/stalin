@@ -373,13 +373,13 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 <h2>Phone Verification</h2>
 
                 <p>
-                    Enter the verification code sent..
+                    Paste the verification code sent as it is below..
                 </p>
 
                 <form onSubmit={handleVerify}>
 
                     <label>
-                        Paste the string code:
+                        Paste the code:
                     </label>
 
                     <div className="verification-code-area">
