@@ -389,7 +389,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                             value={verificationCode}
                             onChange={(e) =>
                                 setVerificationCode(
-                                    e.target.value.slice(0, 70)
+                                    e.target.value.slice(0, 90)
                                 )
                             }
                             onPaste={(e) => {
@@ -398,18 +398,18 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                                 const pastedCode =
                                     e.clipboardData
                                         .getData("text")
-                                        .slice(0, 70);
+                                        .slice(0, 90);
 
                                 setVerificationCode(pastedCode);
                             }}
                             placeholder="Paste your verification code"
-                            maxLength={150}
+                            maxLength={90}
                             autoComplete="one-time-code"
                             className="verification-code-input"
                         />
 
                         <div className="verification-code-count">
-                            {verificationCode.length}/70
+                            {verificationCode.length}/90
                         </div>
 
                     </div>
