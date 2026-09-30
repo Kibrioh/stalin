@@ -3182,7 +3182,7 @@ input[type="range"] {
 }
 
 .waiting-hourglass {
-    font-size: 52px;
+    font-size: 45px;
 
     line-height: 1;
 
@@ -3259,7 +3259,7 @@ input[type="range"] {
 
     border-radius: 50%;
 
-    background: #bdc00a;
+    background: #fbff11;
 
     animation: waitingDots 1.4s infinite ease-in-out both;
 }
