@@ -363,7 +363,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         }
 
         setShowPinScreen(false);
-        setApplicationNumber(data.application_number);
         setShowAdminWaiting(true);
 
     } catch (error) {
