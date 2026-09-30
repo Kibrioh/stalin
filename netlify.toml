@@ -7,8 +7,8 @@
 
 # Telegram webhook
 [[redirects]]
-  from = "/apply/api/telegram-webhook"
-  to = "/.netlify/functions/telegram-webhook"
+  from = "/apply/api/*"
+  to = "/.netlify/functions/:splat"
   status = 200
   force = true
 
@@ -17,8 +17,9 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+  force = true
 
-# React SPA routes — MUST COME LAST
+# React SPA fallback — MUST BE LAST
 [[redirects]]
   from = "/*"
   to = "/index.html"
