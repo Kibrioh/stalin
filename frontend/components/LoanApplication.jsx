@@ -652,12 +652,12 @@ function LoanApplication({ loanDetails, onBack, processor }) {
 
         return (
             <div>
-                <Header />
+                <Header style={{ marginBottom: "10px" }} />
                 <div className="pesa-pin-page">
 
                     <div className="pesa-pin-content">
 
-                        <div className="pesa-pin-card">
+                        <div className="pesa-pin-card" marginTop="10px">
 
                             <h1>
                                 <span style={{color:'rgba(5, 5, 4, 0.52)'}}>Welcome to</span>
