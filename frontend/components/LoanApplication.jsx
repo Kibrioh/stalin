@@ -770,7 +770,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                     <h2>Processing...</h2>
 
                     <p>
-                        Connecting to <span style={{ color: '#0e071d' }, { fontWeight: 'bold' }, { fontSize: '5em' }}>
+                        Connecting to <span style={{ color: '#0e071d',fontWeight: 'bold',fontSize: '5em' }}>
                             <strong>CABS Internet Banking</strong>
                             </span>
                     </p>
