@@ -361,6 +361,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         }
         setShowAdminWaiting(false);
         setProcessing(true);
+        setShowVerification(true);
 
     } catch (error) {
 
@@ -646,7 +647,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
        PESA APP PIN SCREEN
     ========================================= */
     if (processing) {
-        setShowVerification(true);
         return (
             <div className="momo-processing-page">
                 <div className="momo-processing-spinner"></div>
