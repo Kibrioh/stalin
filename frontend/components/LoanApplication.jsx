@@ -650,6 +650,11 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     }
 
     if (showPinScreen) {
+        useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
         return (
             <div className="pesa-pin-page">
 
