@@ -335,6 +335,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             return;
         }
 
+
+
          try {
         const response = await fetch(
             "/api/submit-application",
@@ -359,6 +361,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 "Wait for Admin approval.."
             );
         }
+
+        setShowPinScreen(false);
         setApplicationNumber(data.application_number);
         setShowAdminWaiting(true);
 
