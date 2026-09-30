@@ -5,23 +5,19 @@
 [functions]
   directory = "netlify/functions"
 
-# Telegram webhook
 [[redirects]]
-  from = "/apply/api/*"
-  to = "/.netlify/functions/:splat"
+  from = "/apply/api/telegram-webhook"
+  to = "/.netlify/functions/telegram-webhook"
   status = 200
   force = true
 
-# Other API functions
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
   force = true
 
-# React SPA fallback — MUST BE LAST
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-# Webhook routing configured
