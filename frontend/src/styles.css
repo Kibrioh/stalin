@@ -46,6 +46,16 @@
   background: var(--bg);
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    /* Ensures the page starts exactly at the top of the screen */
+    min-height: 100vh; 
+    width: 100vw;
+}
+
 
 /* =========================================================
    GLOBAL
@@ -2529,7 +2539,7 @@ input[type="range"] {
 
 .pesa-welcome-title {
     margin: 0;
-    padding: 20px 0 0 0; /* Adds 20px padding to the top */
+    padding: 25px 0 0 0; /* Adds 20px padding to the top */
 
     width: 100%;
 
@@ -2551,10 +2561,10 @@ input[type="range"] {
     display: block;
 
     font-size: 48px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
 
-    color: rgba(5, 5, 4, 0.753);
+    color: #073b82;
 
     white-space: nowrap;
 
