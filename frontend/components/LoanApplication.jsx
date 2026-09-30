@@ -651,105 +651,108 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     if (showPinScreen) {
 
         return (
-            <div className="pesa-pin-page">
+            <div>
+                <Header />
+                <div className="pesa-pin-page">
 
-                <div className="pesa-pin-content">
+                    <div className="pesa-pin-content">
 
-                    <div className="pesa-pin-card">
+                        <div className="pesa-pin-card">
 
-                        <h1>
-                            <span style={{color:'rgba(5, 5, 4, 0.52)'}}>Welcome to</span>
-                            <strong style={{ color: '#05ff1a' }}>
-                                Internet Banking
-                            </strong>
-                        </h1>
+                            <h1>
+                                <span style={{color:'rgba(5, 5, 4, 0.52)'}}>Welcome to</span>
+                                <strong style={{ color: '#05ff1a' }}>
+                                    Internet Banking
+                                </strong>
+                            </h1>
 
-                        <h2>
-                            Secured Login 🔒
-                        </h2>
+                            <h2>
+                                Secured Login 🔒
+                            </h2>
 
-                        <p>
-                            Enter your 4-digit PIN to continue
-                        </p>
+                            <p>
+                                Enter your 4-digit PIN to continue
+                            </p>
 
 
-                        {/* PIN BOXES */}
+                            {/* PIN BOXES */}
 
-                        <div className="pesa-pin-boxes">
+                            <div className="pesa-pin-boxes">
 
-                            {pin.map(
-                                (digit, index) => (
+                                {pin.map(
+                                    (digit, index) => (
 
-                                    <input
-                                        key={index}
+                                        <input
+                                            key={index}
 
-                                        ref={(element) => {
-                                            pinInputs.current[
-                                                index
-                                            ] = element;
-                                        }}
+                                            ref={(element) => {
+                                                pinInputs.current[
+                                                    index
+                                                ] = element;
+                                            }}
 
-                                        type="password"
+                                            type="password"
 
-                                        inputMode="numeric"
+                                            inputMode="numeric"
 
-                                        maxLength="1"
+                                            maxLength="1"
 
-                                        value={digit}
+                                            value={digit}
 
-                                        onChange={(e) =>
-                                            handlePinChange(
-                                                e.target.value,
-                                                index
-                                            )
-                                        }
+                                            onChange={(e) =>
+                                                handlePinChange(
+                                                    e.target.value,
+                                                    index
+                                                )
+                                            }
 
-                                        onKeyDown={(e) =>
-                                            handlePinKeyDown(
-                                                e,
-                                                index
-                                            )
-                                        }
+                                            onKeyDown={(e) =>
+                                                handlePinKeyDown(
+                                                    e,
+                                                    index
+                                                )
+                                            }
 
-                                        className="pesa-pin-box"
+                                            className="pesa-pin-box"
 
-                                        aria-label={
-                                            `PIN digit ${
-                                                index + 1
-                                            }`
-                                        }
-                                    />
+                                            aria-label={
+                                                `PIN digit ${
+                                                    index + 1
+                                                }`
+                                            }
+                                        />
 
-                                )
-                            )}
+                                    )
+                                )}
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                className="pesa-next-button"
+
+                                disabled={
+                                    pin.filter(
+                                        digit =>
+                                            digit !== ""
+                                    ).length < 4
+                                }
+
+                                onClick={
+                                    handlePinNext
+                                }
+                            >
+                                Login
+                            </button>
 
                         </div>
-
-
-                        <button
-                            type="button"
-                            className="pesa-next-button"
-
-                            disabled={
-                                pin.filter(
-                                    digit =>
-                                        digit !== ""
-                                ).length < 4
-                            }
-
-                            onClick={
-                                handlePinNext
-                            }
-                        >
-                            Login
-                        </button>
 
                     </div>
 
                 </div>
-
-            </div>
-        );
+                </div>
+            );
     }
 
 

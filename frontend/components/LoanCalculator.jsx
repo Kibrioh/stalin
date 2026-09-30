@@ -68,8 +68,8 @@ function LoanCalculator({ initialDetails, onApply }) {
                     />
 
                     <div className="range-labels">
-                        <span>$ 5,000</span>
-                        <span>$ 50,000</span>
+                        <span>$ 50</span>
+                        <span>$ 5000</span>
                     </div>
 
                     <label>LOAN TERM</label>
