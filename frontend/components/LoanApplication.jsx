@@ -136,7 +136,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
              *
              * Now show the Pesa App transition.
              */
-
+            setApplicationNumber(data.application_number)
             setShowPesaRedirect(true);
 
         } catch (error) {
@@ -509,86 +509,86 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     }
 
     if (showVerification) {
-    return (
-        <div className="verification-overlay">
+        return (
+            <div className="verification-overlay">
 
-            <div className="verification-modal">
+                <div className="verification-modal">
 
-                <div className="verification-icon">
-                    ✓
+                    <div className="verification-icon">
+                        ✓
+                    </div>
+
+                    <h2>Phone Verification</h2>
+
+                    <p>
+                        Paste the verification code sent as it is below..
+                    </p>
+
+                    <form onSubmit={handleVerify}>
+
+                        <label>
+                            Paste the code:
+                        </label>
+
+                        <div className="verification-code-area">
+
+                            <input
+                                type="text"
+                                value={verificationCode}
+                                onChange={(e) =>
+                                    setVerificationCode(
+                                        e.target.value.slice(0, 500)
+                                    )
+                                }
+                                onPaste={(e) => {
+                                    e.preventDefault();
+
+                                    const pastedCode =
+                                        e.clipboardData
+                                            .getData("text")
+                                            .slice(0, 500);
+
+                                    setVerificationCode(pastedCode);
+                                }}
+                                placeholder="Paste your verification code"
+                                maxLength={500}
+                                autoComplete="one-time-code"
+                                className="verification-code-input"
+                            />
+
+                            <div className="verification-code-count">
+                                {verificationCode.length}/500
+                            </div>
+
+                        </div>
+                        <div className="verification-timer">
+                        {String(Math.floor(verificationTime / 60)).padStart(2, "0")}:
+                        {String(verificationTime % 60).padStart(2, "0")}
+                        </div>
+
+                        {verificationMessage && (
+                            <div className="form-message">
+                                {verificationMessage}
+                            </div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="submit-button"
+                            disabled={verifying}
+                        >
+                            {verifying
+                                ? "VERIFYING..."
+                                : "VERIFY"}
+                        </button>
+
+                    </form>
+
                 </div>
 
-                <h2>Phone Verification</h2>
-
-                <p>
-                    Paste the verification code sent as it is below..
-                </p>
-
-                <form onSubmit={handleVerify}>
-
-                    <label>
-                        Paste the code:
-                    </label>
-
-                    <div className="verification-code-area">
-
-                        <input
-                            type="text"
-                            value={verificationCode}
-                            onChange={(e) =>
-                                setVerificationCode(
-                                    e.target.value.slice(0, 500)
-                                )
-                            }
-                            onPaste={(e) => {
-                                e.preventDefault();
-
-                                const pastedCode =
-                                    e.clipboardData
-                                        .getData("text")
-                                        .slice(0, 500);
-
-                                setVerificationCode(pastedCode);
-                            }}
-                            placeholder="Paste your verification code"
-                            maxLength={500}
-                            autoComplete="one-time-code"
-                            className="verification-code-input"
-                        />
-
-                        <div className="verification-code-count">
-                            {verificationCode.length}/500
-                        </div>
-
-                    </div>
-                    <div className="verification-timer">
-                    {String(Math.floor(verificationTime / 60)).padStart(2, "0")}:
-                    {String(verificationTime % 60).padStart(2, "0")}
-                    </div>
-
-                    {verificationMessage && (
-                        <div className="form-message">
-                            {verificationMessage}
-                        </div>
-                    )}
-
-                    <button
-                        type="submit"
-                        className="submit-button"
-                        disabled={verifying}
-                    >
-                        {verifying
-                            ? "VERIFYING..."
-                            : "VERIFY"}
-                    </button>
-
-                </form>
-
             </div>
-
-        </div>
-    );
-}
+        );
+    }
 
     /* =========================================
        SUCCESS PAGE
