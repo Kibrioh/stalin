@@ -522,7 +522,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                     <h2>Phone Verification</h2>
 
                     <p>
-                        Paste the verification code sent as it is below..
+                        Paste the verification code below
                     </p>
 
                     <form onSubmit={handleVerify}>
@@ -770,8 +770,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                     <h2>Processing...</h2>
 
                     <p>
-                        Connecting to <span style={{ color: '#FFCC05' }}>
-                            <strong>MoMo</strong> App.
+                        Connecting to <span style={{ color: '#0e071d' }, { fontWeight: 'bold' }, { fontSize: '5em' }}>
+                            <strong>CABS Internet Banking</strong>
                             </span>
                     </p>
 
