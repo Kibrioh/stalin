@@ -749,11 +749,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 </h2>
 
                 <p>
-                    Connecting to{" "}
-                    <h2>
-                        CABS Internet Banking
-                    </h2>
-                </p>
+                    Connecting to <strong style={{'color':"#073b82"}}>CABS Internet Banking</strong>
+                </p>      
 
             </div>
         );
