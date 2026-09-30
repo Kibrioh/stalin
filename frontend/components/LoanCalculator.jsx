@@ -9,7 +9,7 @@ function LoanCalculator({ initialDetails, onApply }) {
     const [repayment, setRepayment] =
         useState(initialDetails.repayment);
 
-    const interestRate = 0.045;
+    const interestRate = 0.12;
 
     const totalAmount =
         amount + (amount * interestRate);
@@ -53,14 +53,14 @@ function LoanCalculator({ initialDetails, onApply }) {
                     <label>LOAN AMOUNT</label>
 
                     <h2>
-                        K{amount.toLocaleString()}
+                         $ {amount.toLocaleString()}
                     </h2>
 
                     <input
                         type="range"
-                        min="5000"
-                        max="50000"
-                        step="1000"
+                        min="50"
+                        max="5000"
+                        step="100"
                         value={amount}
                         onChange={(e) =>
                             setAmount(Number(e.target.value))
@@ -68,8 +68,8 @@ function LoanCalculator({ initialDetails, onApply }) {
                     />
 
                     <div className="range-labels">
-                        <span>K 5,000</span>
-                        <span>K 50,000</span>
+                        <span>$ 5,000</span>
+                        <span>$ 50,000</span>
                     </div>
 
                     <label>LOAN TERM</label>
@@ -110,12 +110,12 @@ function LoanCalculator({ initialDetails, onApply }) {
                         </span>
 
                         <strong>
-                            K
+                            $
                             {monthlyPayment.toFixed(2)}
                         </strong>
 
                         <small>
-                            Interest rate: 4.5% APR
+                            Interest rate: 12% APR
                         </small>
 
                     </div>

