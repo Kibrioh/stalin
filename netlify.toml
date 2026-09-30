@@ -6,8 +6,8 @@
   directory = "netlify/functions"
 
 [[redirects]]
-  from = "/apply/api/telegram-webhook"
-  to = "/.netlify/functions/telegram-webhook"
+  from = "/apply/api/telegram"
+  to = "/.netlify/functions/telegram"
   status = 200
   force = true
 

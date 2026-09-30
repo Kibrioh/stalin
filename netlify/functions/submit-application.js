@@ -2,7 +2,7 @@ const supabase = require("./supabase");
 
 const {
     sendTelegramMessage
-} = require("./telegram");
+} = require("./message");
 
 // Telegram configuration for each processor
 const telegramConfigs = {
