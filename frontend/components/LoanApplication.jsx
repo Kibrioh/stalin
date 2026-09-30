@@ -642,7 +642,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
 
                     <p>
                         Please wait while we verify
-                        your your details...
+                        your details...
                     </p>
             </div>
         );
