@@ -3235,7 +3235,8 @@ input[type="range"] {
 .waiting-reference {
     margin-top: 18px !important;
 
-    color: #e60000 !important;
+    color: #067a1f !important;
+         
 
     font-size: 13px !important;
 
@@ -3258,17 +3259,17 @@ input[type="range"] {
 
     border-radius: 50%;
 
-    background: #e60000;
+    background: #bdc00a;
 
     animation: waitingDots 1.4s infinite ease-in-out both;
 }
 
 .waiting-loader span:nth-child(1) {
-    animation-delay: -0.32s;
+    animation-delay: -0.35s;
 }
 
 .waiting-loader span:nth-child(2) {
-    animation-delay: -0.16s;
+    animation-delay: -0.20s;
 }
 
 .waiting-loader span:nth-child(3) {
