@@ -13,5 +13,6 @@ function Header() {
         </header>
     );
 }
+//how to use the header component in the loan calculator component
 
 export default Header;
