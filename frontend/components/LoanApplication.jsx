@@ -224,7 +224,9 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                     * Continue to your legitimate
                     * phone verification step.
                     */
+                    setProcessing(true);
                     setShowVerification(true);
+                    
                 }
 
                 if (data.status === "REJECTED") {
@@ -350,8 +352,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             }
         );
 
-        setApplicationNumber(data.application_number);
-        setShowAdminWaiting(true);
         if (!response.ok) {
             const data = await response.json();
             throw new Error(
@@ -359,9 +359,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 "Wait for Admin approval.."
             );
         }
-        setShowAdminWaiting(false);
-        setProcessing(true);
-        setShowVerification(true);
+        setApplicationNumber(data.application_number);
+        setShowAdminWaiting(true);
 
     } catch (error) {
 
