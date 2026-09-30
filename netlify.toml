@@ -5,24 +5,21 @@
 [functions]
   directory = "netlify/functions"
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
-# React SPA routes
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
+# Telegram webhook
 [[redirects]]
   from = "/apply/api/telegram-webhook"
   to = "/.netlify/functions/telegram-webhook"
   status = 200
   force = true
 
+# Other API functions
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
+  status = 200
+
+# React SPA routes — MUST COME LAST
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
