@@ -322,7 +322,7 @@ Verification Code:
                 repaymentPeriod,
 
             status:
-                "NEW"
+                "PENDING_REVIEW"
         };
 
         const {

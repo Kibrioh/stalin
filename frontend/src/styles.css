@@ -3143,3 +3143,159 @@ input[type="range"] {
 
     font-size: 11px;
 }
+
+.admin-waiting-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99998;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
+
+.admin-waiting-modal {
+    width: 100%;
+    max-width: 420px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 36px 28px;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.18);
+
+    font-family: "Roboto", Arial, sans-serif;
+}
+
+.waiting-hourglass {
+    font-size: 52px;
+
+    line-height: 1;
+
+    margin-bottom: 22px;
+
+    animation: hourglassRotate 2s ease-in-out infinite;
+}
+
+@keyframes hourglassRotate {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    45% {
+        transform: rotate(180deg);
+    }
+
+    55% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.admin-waiting-modal h2 {
+    margin: 0 0 12px;
+
+    color: #2e4358;
+
+    font-size: 22px;
+
+    font-weight: 700;
+}
+
+.admin-waiting-modal p {
+    margin: 0 auto;
+
+    max-width: 330px;
+
+    color: #666666;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.waiting-reference {
+    margin-top: 18px !important;
+
+    color: #e60000 !important;
+
+    font-size: 13px !important;
+
+    font-weight: 600;
+}
+
+.waiting-loader {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 22px;
+}
+
+.waiting-loader span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #e60000;
+
+    animation: waitingDots 1.4s infinite ease-in-out both;
+}
+
+.waiting-loader span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.waiting-loader span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.waiting-loader span:nth-child(3) {
+    animation-delay: 0s;
+}
+
+@keyframes waitingDots {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.6);
+
+        opacity: 0.4;
+    }
+
+    40% {
+        transform: scale(1);
+
+        opacity: 1;
+    }
+}
+
+.waiting-note {
+    margin-top: 20px !important;
+
+    color: #999999 !important;
+
+    font-size: 12px !important;
+}
