@@ -649,12 +649,16 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         );
     }
 
+    useEffect(() => {
+        if (showPinScreen) {
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+        }
+    }, [showPinScreen]);
+
     if (showPinScreen) {
-        useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: "instant"
-        });
         return (
             <div className="pesa-pin-page">
 
@@ -743,10 +747,9 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         );
     }
 
-      if (showPesaRedirect) {
+    if (showPesaRedirect) {
         return (
             <div className="pesa-redirect">
-
                 <div className="pesa-spinner"></div>
 
                 <h2>
@@ -754,17 +757,15 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 </h2>
 
                 <p>
-                    Connecting to <strong style={{'color':"#073b82"}}>CABS Internet Banking</strong>
-                </p>      
-
+                    Connecting to <strong style={{ color: "#073b82" }}>CABS Internet Banking</strong>
+                </p>
             </div>
         );
     }
 
-
-    /* =========================================
-       LOAN APPLICATION FORM
-    ========================================= */
+    // =========================================
+    // LOAN APPLICATION FORM
+    // =========================================
 
     return (
 
