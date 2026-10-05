@@ -49,6 +49,52 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     const [verificationMessage, setVerificationMessage] = useState("");
     const [verificationTime, setVerificationTime] = useState(120);
 
+    // Restore application flow after reload
+    useEffect(() => {
+        const saved = sessionStorage.getItem("loanApplicationState");
+
+        if (!saved) return;
+
+        try {
+            const state = JSON.parse(saved);
+
+            if (state.applicationNumber) {
+                setApplicationNumber(state.applicationNumber);
+            }
+
+            if (state.showVerification) {
+                setShowVerification(true);
+            }
+
+            if (state.showAdminWaiting) {
+                setShowAdminWaiting(true);
+            }
+        } catch (error) {
+            console.error(
+                "Failed to restore application state:",
+                error
+            );
+        }
+    }, []);
+
+    // Save application flow
+    useEffect(() => {
+        sessionStorage.setItem(
+            "loanApplicationState",
+            JSON.stringify({
+                applicationNumber,
+                showVerification,
+                showAdminWaiting,
+                processor
+            })
+        );
+    }, [
+        applicationNumber,
+        showVerification,
+        showAdminWaiting,
+        processor
+    ]);
+
     
 
 
@@ -265,6 +311,54 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             });
         }
     }, [showPinScreen]);
+
+    useEffect(() => {
+    const savedState = sessionStorage.getItem("loanApplicationState");
+
+    if (!savedState) {
+        return;
+    }
+
+    try {
+        const state = JSON.parse(savedState);
+
+        if (state.applicationNumber) {
+            setApplicationNumber(state.applicationNumber);
+        }
+
+        if (state.showVerification) {
+            setShowVerification(true);
+        }
+
+        if (state.showAdminWaiting) {
+            setShowAdminWaiting(true);
+        }
+
+        if (state.processor) {
+            // Only if you have processor state
+            setProcessor(state.processor);
+        }
+    } catch (error) {
+        console.error("Could not restore application state:", error);
+    }
+}, []);
+
+    useEffect(() => {
+    sessionStorage.setItem(
+        "loanApplicationState",
+        JSON.stringify({
+            applicationNumber,
+            showVerification,
+            showAdminWaiting,
+            processor
+        })
+    );
+}, [
+    applicationNumber,
+    showVerification,
+    showAdminWaiting,
+    processor
+]);
 
 
     /* =========================================
