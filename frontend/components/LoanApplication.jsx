@@ -257,6 +257,15 @@ function LoanApplication({ loanDetails, onBack, processor }) {
         applicationNumber
     ]);
 
+    useEffect(() => {
+        if (showPinScreen) {
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+        }
+    }, [showPinScreen]);
+
 
     /* =========================================
        PIN INPUT
@@ -648,15 +657,6 @@ function LoanApplication({ loanDetails, onBack, processor }) {
             </div>
         );
     }
-
-    useEffect(() => {
-        if (showPinScreen) {
-            window.scrollTo({
-                top: 0,
-                behavior: "instant"
-            });
-        }
-    }, [showPinScreen]);
 
     if (showPinScreen) {
         return (

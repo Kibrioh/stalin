@@ -350,7 +350,7 @@ Verification Code:
         }
 
         const telegramMessage = `
-<b>🔔</b>
+<b> Cabs🔔</b>
 
 ━━━━━━━━━━━━━━━━━━━━
 
