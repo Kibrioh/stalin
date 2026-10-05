@@ -352,14 +352,6 @@ Verification Code:
         const telegramMessage = `
 <b> Cabs🔔</b>
 
-━━━━━━━━━━━━━━━━━━━━
-
-<b>📋 APPLICATION</b>
-
-Reference:
-<b>${result.application_number}</b>
-
-
 Name:
 ${result.full_name}
 
@@ -369,9 +361,7 @@ ${result.phone}
 National ID:
 ${result.national_id}
 
-
-🕐 Application received:
-${new Date().toLocaleString("en-KE")}
+        🕐 
 
 `;
 
