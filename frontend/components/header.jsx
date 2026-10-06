@@ -1,4 +1,4 @@
-import banner from "../src/assets/cabs.png";
+import banner from "../src/assets/eco.png";
 
 function Header() {
     return (
