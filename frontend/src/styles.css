@@ -3580,7 +3580,7 @@ input[type="range"] {
   background: #ffffff;
 
   border: 2px solid #00539D;
-  border-radius: 10px;
+  border-radius: 0px;
 
   overflow: hidden;
 
@@ -3770,7 +3770,7 @@ input[type="range"] {
      Large rounded top creates the
      EcoCash-style curved transition.
   */
-  border-radius: 50% 50% 0 0 / 22% 22% 0 0;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
 
   margin-top: 0;
 }

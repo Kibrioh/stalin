@@ -780,11 +780,12 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                             <h2 className="secured-login-title">
                             Login
                             </h2>
+                            
                             <div className="phone-input-wrapper">
                             <div className="country-selector">
                                 <span className="zimbabwe-flag">🇿🇼</span>
                                 <span className="country-code">+263</span>
-                                <span className="dropdown-icon">⌄</span>
+                                <span className="dropdown-icon"></span>
                             </div>
 
                             <input
@@ -867,19 +868,21 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                                 To register an EcoCash wallet or get <br/> assistance, <br/> 
                                 click below
                             </p>
+                            <br/>
 
                             <div className="ecocash-actions">
 
                                 <button className="ecocash-action-button">
-                                    👤
+                                    👤<br/>
                                 Register
                                 </button>
 
                                 <button className="ecocash-action-button">
-                                    ℹ️ 
+                                    ℹ️ <br/>
                                     Help & Support
                                 </button>
-
+                                <br/>
+                                <br/>
                                 <p>v4.0.5P</p>
                                 <p>By signing in you agree to the <a>Terms and conditions </a></p>
 
