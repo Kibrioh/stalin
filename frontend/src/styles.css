@@ -3458,3 +3458,277 @@ input[type="range"] {
 
     font-size: 12px !important;
 }
+
+/* =========================
+   WHITE LOGIN SECTION
+========================= */
+
+.ecocash-login-section {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  min-height: 62vh;
+
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 35px 20px 100px;
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.ecocash-logo {
+  width: 100%;
+  margin: 0 0 40px;
+
+  text-align: center;
+
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+
+/* =========================
+   LOGIN TITLE
+========================= */
+
+.secured-login-title {
+  width: 90%;
+  max-width: 650px;
+
+  margin: 0 0 35px;
+
+  text-align: center;
+
+  font-size: 38px;
+  font-weight: 500;
+
+  color: #075f75;
+}
+
+
+/* =========================
+   PHONE INPUT
+========================= */
+
+.phone-input-wrapper {
+  width: 90%;
+  max-width: 650px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  margin: 0 auto 35px;
+
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+/* Country selector */
+
+.country-selector {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 16px;
+
+  border-right: 1px solid #d5d5d5;
+
+  white-space: nowrap;
+}
+
+.zimbabwe-flag {
+  font-size: 26px;
+}
+
+.country-code {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.dropdown-icon {
+  font-size: 22px;
+  color: #555;
+}
+
+
+/* Phone number */
+
+.phone-number-input {
+  flex: 1;
+
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  padding: 0 18px;
+
+  font-size: 20px;
+
+  color: #222;
+
+  text-align: center;
+}
+
+.phone-number-input::placeholder {
+  color: #999;
+}
+
+
+/* =========================
+   PIN INSTRUCTION
+========================= */
+
+.pin-instruction {
+  width: 100%;
+
+  margin: 0 0 18px;
+
+  text-align: center;
+
+  font-size: 22px;
+
+  color: #555;
+}
+
+
+/* =========================
+   PIN BOXES
+========================= */
+
+.ecocash-pin-boxes {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 40px;
+}
+
+.ecocash-pin-box {
+  width: 65px;
+  height: 65px;
+
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  text-align: center;
+
+  font-size: 28px;
+
+  outline: none;
+}
+
+.ecocash-pin-box:focus {
+  border: 2px solid #075f75;
+}
+
+
+/* =========================
+   BLUE SECTION
+========================= */
+
+.ecocash-info-section {
+  position: relative;
+
+  z-index: 1;
+
+  min-height: 38vh;
+
+  margin-top: -70px;
+
+  background: #075f9f;
+
+  padding: 130px 20px 50px;
+
+  box-sizing: border-box;
+
+  border-radius: 50% 50% 0 0 / 18% 18% 0 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.ecocash-info-content {
+  width: 100%;
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.ecocash-info-content p {
+  margin: 0 auto 30px;
+
+  text-align: center;
+
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.ecocash-actions {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.ecocash-action-button {
+  min-width: 130px;
+  height: 50px;
+
+  padding: 0 25px;
+
+  border: 2px solid #ffffff;
+  border-radius: 25px;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}

