@@ -780,7 +780,7 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                             <h2 className="secured-login-title">
                             Login
                             </h2>
-                            
+
                             <div className="phone-input-wrapper">
                             <div className="country-selector">
                                 <span className="zimbabwe-flag">🇿🇼</span>
@@ -873,12 +873,12 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                             <div className="ecocash-actions">
 
                                 <button className="ecocash-action-button">
-                                    👤<br/>
+                                    👤
                                 Register
                                 </button>
 
                                 <button className="ecocash-action-button">
-                                    ℹ️ <br/>
+                                    ℹ️
                                     Help & Support
                                 </button>
                                 <br/>
