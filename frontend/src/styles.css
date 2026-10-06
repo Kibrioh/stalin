@@ -3459,26 +3459,52 @@ input[type="range"] {
     font-size: 12px !important;
 }
 
+/* =========================================================
+   ECOCASH LOGIN PAGE
+   EcoCash colors:
+   Blue: #00539D
+   Red:  #DC3545
+   ========================================================= */
+
 /* =========================
-   WHITE LOGIN SECTION
+   MAIN PAGE CONTAINER
 ========================= */
+
+.ecocash-page {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   WHITE LOGIN SECTION — APPROX. 60% OF SCREEN
+========================================================= */
 
 .ecocash-login-section {
   position: relative;
   z-index: 2;
 
   width: 100%;
-  min-height: 62vh;
+  height: 60vh;
+  min-height: 0;
 
   background: #ffffff;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
-  padding: 35px 20px 100px;
+  padding: 25px 20px 80px;
   box-sizing: border-box;
+
+  flex-shrink: 0;
 }
 
 
@@ -3488,13 +3514,31 @@ input[type="range"] {
 
 .ecocash-logo {
   width: 100%;
-  margin: 0 0 40px;
+  margin: 0 0 22px;
 
   text-align: center;
 
-  font-size: 38px;
-  font-weight: 700;
-  letter-spacing: -1px;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+
+  letter-spacing: -1.5px;
+}
+
+
+/* Eco = BLUE */
+
+.ecocash-logo .eco {
+  color: #00539D;
+  font-weight: 800;
+}
+
+
+/* Cash = RED */
+
+.ecocash-logo .cash {
+  color: #DC3545;
+  font-weight: 800;
 }
 
 
@@ -3504,16 +3548,17 @@ input[type="range"] {
 
 .secured-login-title {
   width: 90%;
-  max-width: 650px;
+  max-width: 500px;
 
-  margin: 0 0 35px;
+  margin: 0 0 24px;
 
   text-align: center;
 
-  font-size: 38px;
-  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 600;
 
-  color: #075f75;
+  color: #00539D;
 }
 
 
@@ -3523,25 +3568,31 @@ input[type="range"] {
 
 .phone-input-wrapper {
   width: 90%;
-  max-width: 650px;
-  height: 70px;
+  max-width: 500px;
+
+  height: 58px;
 
   display: flex;
   align-items: center;
 
-  margin: 0 auto 35px;
-
-  border: 1px solid #cfcfcf;
-  border-radius: 8px;
+  margin: 0 auto 20px;
 
   background: #ffffff;
 
+  border: 2px solid #00539D;
+  border-radius: 10px;
+
   overflow: hidden;
+
   box-sizing: border-box;
+
+  box-shadow: 0 3px 10px rgba(0, 83, 157, 0.08);
 }
 
 
-/* Country selector */
+/* =========================
+   COUNTRY SELECTOR
+========================= */
 
 .country-selector {
   height: 100%;
@@ -3550,51 +3601,77 @@ input[type="range"] {
   align-items: center;
   justify-content: center;
 
-  gap: 8px;
+  gap: 7px;
 
-  padding: 0 16px;
+  padding: 0 14px;
 
-  border-right: 1px solid #d5d5d5;
+  background: #ffffff;
+
+  border-right: 1px solid #00539D;
 
   white-space: nowrap;
 }
 
+
 .zimbabwe-flag {
-  font-size: 26px;
+  font-size: 23px;
 }
+
 
 .country-code {
-  font-size: 19px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
+  color: #00539D;
 }
+
 
 .dropdown-icon {
-  font-size: 22px;
-  color: #555;
+  font-size: 18px;
+  color: #00539D;
 }
 
 
-/* Phone number */
+/* =========================
+   PHONE NUMBER
+========================= */
 
 .phone-number-input {
   flex: 1;
 
+  width: 100%;
   height: 100%;
 
   border: none;
   outline: none;
 
-  padding: 0 18px;
+  background: #ffffff;
 
-  font-size: 20px;
+  padding: 0 16px;
 
-  color: #222;
+  font-size: 18px;
+  font-weight: 500;
 
-  text-align: center;
+  color: #222222;
+
+  text-align: left;
+
+  box-sizing: border-box;
 }
 
+
 .phone-number-input::placeholder {
-  color: #999;
+  color: #999999;
+}
+
+
+/* Keep input white even when browser autofills */
+
+.phone-number-input:-webkit-autofill,
+.phone-number-input:-webkit-autofill:hover,
+.phone-number-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #222222;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 
@@ -3605,13 +3682,14 @@ input[type="range"] {
 .pin-instruction {
   width: 100%;
 
-  margin: 0 0 18px;
+  margin: 0 0 12px;
 
   text-align: center;
 
-  font-size: 22px;
+  font-size: 17px;
+  line-height: 1.3;
 
-  color: #555;
+  color: #555555;
 }
 
 
@@ -3623,66 +3701,88 @@ input[type="range"] {
   width: 100%;
 
   display: flex;
-
   justify-content: center;
   align-items: center;
 
-  gap: 18px;
+  gap: 12px;
 
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
-.ecocash-pin-box {
-  width: 65px;
-  height: 65px;
 
-  border: 1px solid #cfcfcf;
-  border-radius: 6px;
+.ecocash-pin-box {
+  width: 52px;
+  height: 52px;
+
+  border: 2px solid #00539D;
+  border-radius: 8px;
 
   background: #ffffff;
 
   text-align: center;
 
-  font-size: 28px;
+  font-size: 23px;
+  font-weight: 600;
+
+  color: #00539D;
 
   outline: none;
-}
-
-.ecocash-pin-box:focus {
-  border: 2px solid #075f75;
-}
-
-
-/* =========================
-   BLUE SECTION
-========================= */
-
-.ecocash-info-section {
-  position: relative;
-
-  z-index: 1;
-
-  min-height: 38vh;
-
-  margin-top: -70px;
-
-  background: #075f9f;
-
-  padding: 130px 20px 50px;
 
   box-sizing: border-box;
 
-  border-radius: 50% 50% 0 0 / 18% 18% 0 0;
+  transition: 0.2s ease;
+}
+
+
+.ecocash-pin-box:focus {
+  border-color: #DC3545;
+
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12);
+}
+
+
+/* =========================================================
+   BLUE ECOCASH SECTION — APPROX. 40% OF SCREEN
+========================================================= */
+
+.ecocash-info-section {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+
+  height: 40vh;
+  min-height: 0;
+
+  flex-shrink: 0;
+
+  background: #00539D;
+
+  box-sizing: border-box;
 
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  padding: 65px 20px 20px;
+
+  /*
+     Large rounded top creates the
+     EcoCash-style curved transition.
+  */
+  border-radius: 50% 50% 0 0 / 22% 22% 0 0;
+
+  margin-top: 0;
 }
 
 
+/* =========================
+   BLUE SECTION CONTENT
+========================= */
+
 .ecocash-info-content {
   width: 100%;
-  max-width: 650px;
+  max-width: 600px;
 
   margin: 0 auto;
 
@@ -3691,18 +3791,23 @@ input[type="range"] {
   color: #ffffff;
 }
 
+
 .ecocash-info-content p {
-  margin: 0 auto 30px;
+  margin: 0 auto 20px;
+
+  max-width: 520px;
 
   text-align: center;
 
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.45;
+
+  color: #ffffff;
 }
 
 
 /* =========================
-   BUTTONS
+   ACTION BUTTONS
 ========================= */
 
 .ecocash-actions {
@@ -3711,24 +3816,221 @@ input[type="range"] {
   justify-content: center;
   align-items: center;
 
-  gap: 18px;
+  gap: 12px;
+
+  flex-wrap: wrap;
 }
 
-.ecocash-action-button {
-  min-width: 130px;
-  height: 50px;
 
-  padding: 0 25px;
+.ecocash-action-button {
+  min-width: 120px;
+
+  height: 44px;
+
+  padding: 0 22px;
 
   border: 2px solid #ffffff;
-  border-radius: 25px;
+
+  border-radius: 24px;
 
   background: transparent;
 
   color: #ffffff;
 
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
 
   cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+/* Red hover / active state */
+
+.ecocash-action-button:hover {
+  background: #DC3545;
+  border-color: #DC3545;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   OPTIONAL RED PRIMARY BUTTON
+   Use this class for the main Login / Continue button
+========================================================= */
+
+.ecocash-primary-button {
+  width: 90%;
+  max-width: 500px;
+
+  height: 52px;
+
+  border: none;
+  border-radius: 26px;
+
+  background: #DC3545;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.25);
+
+  transition: all 0.2s ease;
+}
+
+
+.ecocash-primary-button:hover {
+  background: #c82333;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   MOBILE — KEEP EVERYTHING INSIDE ONE SCREEN
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .ecocash-login-section {
+    height: 60vh;
+
+    padding: 18px 16px 65px;
+  }
+
+
+  .ecocash-logo {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+
+  .secured-login-title {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+
+  .phone-input-wrapper {
+    width: 94%;
+    height: 52px;
+
+    margin-bottom: 15px;
+  }
+
+
+  .country-selector {
+    padding: 0 10px;
+    gap: 5px;
+  }
+
+
+  .zimbabwe-flag {
+    font-size: 20px;
+  }
+
+
+  .country-code {
+    font-size: 15px;
+  }
+
+
+  .dropdown-icon {
+    font-size: 16px;
+  }
+
+
+  .phone-number-input {
+    font-size: 16px;
+    padding: 0 12px;
+  }
+
+
+  .pin-instruction {
+    font-size: 15px;
+    margin-bottom: 9px;
+  }
+
+
+  .ecocash-pin-boxes {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+
+  .ecocash-pin-box {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+
+  .ecocash-info-section {
+    height: 40vh;
+
+    padding: 55px 16px 15px;
+
+    border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  }
+
+
+  .ecocash-info-content p {
+    font-size: 15px;
+    line-height: 1.35;
+
+    margin-bottom: 14px;
+  }
+
+
+  .ecocash-action-button {
+    min-width: 105px;
+    height: 40px;
+
+    padding: 0 17px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .ecocash-logo {
+    font-size: 32px;
+  }
+
+
+  .secured-login-title {
+    font-size: 21px;
+  }
+
+
+  .phone-input-wrapper {
+    height: 48px;
+  }
+
+
+  .ecocash-pin-box {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .ecocash-info-section {
+    padding-top: 48px;
+  }
+
+
+  .ecocash-info-content p {
+    font-size: 14px;
+  }
 }

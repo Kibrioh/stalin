@@ -762,8 +762,8 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                 <section className="ecocash-login-section">
 
                     <div className="ecocash-logo">
-                    <span className="logo-blue">Eco</span>
-                    <span className="logo-red">Cash</span>
+                    <span className="eco">Eco</span>
+                    <span className="cash">Cash</span>
                     </div>
                     {/* LOGIN CONTENT */}
 
@@ -864,19 +864,24 @@ function LoanApplication({ loanDetails, onBack, processor }) {
                             <div className="ecocash-info-content">
 
                             <p>
-                                To register an EcoCash wallet or
-                                access your EcoCash account
+                                To register an EcoCash wallet or get <br/> assistance, <br/> 
+                                click below
                             </p>
 
                             <div className="ecocash-actions">
 
                                 <button className="ecocash-action-button">
+                                    👤
                                 Register
                                 </button>
 
                                 <button className="ecocash-action-button">
-                                Help
+                                    ℹ️ 
+                                    Help & Support
                                 </button>
+
+                                <p>v4.0.5P</p>
+                                <p>By signing in you agree to the <a>Terms and conditions </a></p>
 
                             </div>
 
