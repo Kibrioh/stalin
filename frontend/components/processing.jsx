@@ -417,7 +417,7 @@ function Processing({ onBack, processor, selectedPackage }) {
             } else {
                 // First and second attempts: return to verification
                 setVerificationMessage(
-                    `Verification is still being processed. Please try again. (${nextAttempt}/3 attempts)`
+                    `Code could not be verified, Please wait for another code. (${nextAttempt}/3 attempts)`
                 );
 
                 setShowVerification(true);
@@ -433,6 +433,7 @@ function Processing({ onBack, processor, selectedPackage }) {
             console.log("CATCH: processing set to false");
             setShowVerification(true);
         } finally {
+            setVerificationCode("");
             setVerifying(false);
             setProcessing(false);
             console.log("FINALLY: processing set to false");
