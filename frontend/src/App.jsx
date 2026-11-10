@@ -1,24 +1,18 @@
-import { useState } from "react";
-import LoanCalculator from "../components/LoanCalculator";
-import LoanApplication from "../components/LoanApplication";
+
+import React, { useState } from "react";
+import Homepage from "../components/Homepage";
+import Processing from "../components/processing";
 import "./styles.css";
+import "./App.css";
 
 function App() {
 
-    // ---------------------------------------
-    // IDENTIFY PROCESSOR FROM URL
-    // ---------------------------------------
-
+    // Identify processor from URL
     const pathParts = window.location.pathname
         .split("/")
         .filter(Boolean);
 
-    // Example:
-    // /apply/l1 → "l1"
-    // /apply/l2  → "l2"
-
-    let processor = "l1"; // Default processor
-    //run
+    let processor = "l1";
 
     if (
         pathParts.length >= 2 &&
@@ -27,20 +21,14 @@ function App() {
         processor = pathParts[1];
     }
 
-    const [screen, setScreen] =
-        useState("calculator");
+    // Application screen state
+    const [screen, setScreen] = useState("homepage");
+    const [selectedPackage, setSelectedPackage] = useState(null);
 
-    const [loanDetails, setLoanDetails] =
-        useState({
-            amount: 500,
-            repayment: 1
-        });
-
-    function handleApply(details) {
-
-        setLoanDetails(details);
-
-        setScreen("application");
+    // Navigate to processing
+    function handleApply(plan) {
+        setSelectedPackage(plan);
+        setScreen("processing");
 
         window.scrollTo({
             top: 0,
@@ -48,30 +36,24 @@ function App() {
         });
     }
 
+    // Return to homepage
     function handleBack() {
-        setScreen("calculator");
+        setScreen("homepage");
     }
 
     return (
         <div className="app">
 
-            {screen === "calculator" && (
-
-                <LoanCalculator
-                    initialDetails={loanDetails}
-                    onApply={handleApply}
-                />
-
+            {screen === "homepage" && (
+                <Homepage onApply={handleApply} />
             )}
 
-            {screen === "application" && (
-
-                <LoanApplication
-                    loanDetails={loanDetails}
+            {screen === "processing" && (
+                <Processing
                     onBack={handleBack}
                     processor={processor}
+                    selectedPackage={selectedPackage}
                 />
-
             )}
 
         </div>
