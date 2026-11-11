@@ -5,7 +5,7 @@ const packages = [
   {
     id: "lite",
     name: "Residential Lite",
-    price: 20,
+    price: 5,
     description: "Unlimited standard data",
     features: [
       "Unlimited standard data",
@@ -17,7 +17,7 @@ const packages = [
   {
     id: "residential",
     name: "Residential",
-    price: 30,
+    price: 10,
     description: "For households and small teams",
     features: [
       "Unlimited standard data",
@@ -27,7 +27,7 @@ const packages = [
   {
     id: "priority-1",
     name: "Priority 1 TB",
-    price: 140,
+    price: 20,
     description: "Business-ready connectivity",
     features: [
       "1 TB priority data",
@@ -37,7 +37,7 @@ const packages = [
   {
     id: "priority-2",
     name: "Priority 2 TB",
-    price: 250,
+    price: 30,
     description: "For high-demand business use",
     features: [
       "2 TB priority data",
